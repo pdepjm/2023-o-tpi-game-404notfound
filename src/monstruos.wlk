@@ -1,5 +1,6 @@
 import wollok.game.*
 import pjPrincipal.*
+import items.*
 
 class Monstruo {
 	
@@ -15,7 +16,13 @@ class Monstruo {
 	method mensaje(){
 		game.say(self, "A casa loco " /*+ PjNombre.nombre()*/)
 	}
+	
+	method morir()
+	{
+		imagen = "monstruos/cenizas.png"
+		nivel = 0
+	}
 
 }
-const enemigo = new Monstruo(nivel = 6,position = game.center(), imagen = "monstruos/ogroLVL3.png")
-const enemigo2 = new Monstruo(nivel = 1,position = game.at(2,3), imagen = "monstruos/ciclope_preview.png")
+const enemigo = new Monstruo(nivel = 3,position = game.at(0,3), imagen = "monstruos/ogroLVL3.png")
+const enemigo2 = new Monstruo(nivel = 1,position = game.at(4,3), imagen = "monstruos/ciclope_preview.png")

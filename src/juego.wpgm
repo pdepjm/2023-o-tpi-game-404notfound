@@ -1,18 +1,21 @@
 import wollok.game.*
 import pjPrincipal.*
 import monstruos.*
+import items.*
 
 program juego {
 	game.title("Juego Base")
 
-	game.width(9)
-	game.height(9)
+	game.width(5)
+	game.height(5)
 	
 	game.addVisual(ruben)
 	game.addVisual(enemigo)
 	game.addVisual(enemigo2)
+	game.addVisual(daga1)
 	
 	var personaje = ruben
+	
 	keyboard.up().onPressDo({ 
 		personaje.moverseHaciaArriba()
 	})
@@ -29,6 +32,8 @@ program juego {
 	
 	game.onCollideDo(enemigo, { personaje_ => personaje_.atacar(enemigo) }  )
 	game.onCollideDo(enemigo2, { personaje_ => personaje_.atacar(enemigo2) }  )
+	game.onCollideDo(daga1, { personaje_ => personaje_.agarrar(daga1) }  )
+
 	
 	game.start()
 }

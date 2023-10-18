@@ -1,5 +1,6 @@
 import wollok.game.*
 import monstruos.*
+import items.*
 
 /*
 object ruben {
@@ -28,10 +29,10 @@ object ruben {
 */
 class PjPrincipal{
 	
-	var ataque = 0
-	var escudo = 0
-	var vida = 3
-	var property position = game.at(4,0)
+	var ataque = 1
+	var escudo = 1
+	var vida = 1
+	var property position = game.at(2,0)
 	var image = "rubens/ruben_arriba.png"
 	
 	method image() = image
@@ -66,26 +67,53 @@ class PjPrincipal{
 	
 	method atacar(enemigo_){
 		
+		var aux
+		
+		aux = escudo
+		
 		escudo = (self.escudo() - enemigo_.nivel()).max(0)
-		enemigo_.nuevoNivel((self.escudo() - enemigo_.nivel()).abs())
+		enemigo_.nuevoNivel((enemigo_.nivel()- aux).max(0))
+		
+		aux = ataque
 		
 		ataque = (self.ataque() - enemigo_.nivel()).max(0)
-		enemigo_.nuevoNivel((self.ataque() - enemigo_.nivel()).abs())
+		enemigo_.nuevoNivel((enemigo_.nivel() - aux).max(0))
+		
+		aux = vida
 		
 		vida = (self.vida() - enemigo_.nivel()).max(0)
-		enemigo_.nuevoNivel((self.vida() - enemigo_.nivel()).abs())
+		enemigo_.nuevoNivel((enemigo_.nivel() - aux).max(0))
 		
-		if(!self.tieneVida()){
+		if(!self.tieneVida())
+		{
 			enemigo_.mensaje()
-		}else{
+			// GAME OVER
+		}
+		else
+		{
 			self.boquear()
+			enemigo_.morir()
+			
+			
 		}
 	}
+	
+	method agarrar(item)
+	{
+		self.actualizarEstadisticas(item)
+	}
+	
+	method actualizarEstadisticas(item)
+	{
+		ataque += item.nivel()
+	}
+	
+	
 	method boquear(){
 		game.say(self, "A casa bicho raro" /*+ PjNombre.nombre()*/)
 	}
 	method tieneVida() = self.vida() > 0 
 }
 
-const ruben = new PjPrincipal(ataque = 3)
+const ruben = new PjPrincipal()
 
