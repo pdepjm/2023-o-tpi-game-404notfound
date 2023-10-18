@@ -2,38 +2,54 @@ import wollok.game.*
 import pjPrincipal.*
 import monstruos.*
 import items.*
+import inventario.*
+import celdasEspeciales.*
 
 program juego {
-	game.title("Juego Base")
+    game.title("La aventura del Robot Ruben")
 
-	game.width(5)
-	game.height(5)
-	
-	game.addVisual(ruben)
-	game.addVisual(enemigo)
-	game.addVisual(enemigo2)
-	game.addVisual(daga1)
-	
-	var personaje = ruben
-	
-	keyboard.up().onPressDo({ 
-		personaje.moverseHaciaArriba()
-	})
-	keyboard.down().onPressDo({ 
-		personaje.moverseHaciaAbajo()
-	})
-	keyboard.left().onPressDo({ 
-		personaje.moverseHaciaIzquierda()
-	})
-	keyboard.right().onPressDo({ 
-		personaje.moverseHaciaDerecha()
-	})
-	
-	
-	game.onCollideDo(enemigo, { personaje_ => personaje_.atacar(enemigo) }  )
-	game.onCollideDo(enemigo2, { personaje_ => personaje_.atacar(enemigo2) }  )
-	game.onCollideDo(daga1, { personaje_ => personaje_.agarrar(daga1) }  )
+    game.width(9)
+    game.height(11)
 
-	
-	game.start()
+    game.boardGround("fondo1.jpg") 
+
+    game.addVisual(ruben)
+    game.addVisual(enemigo)
+    game.addVisual(enemigo2)
+    game.addVisual(daga1)
+    game.addVisual(texto_monedas)
+    game.addVisual(texto_vidas)
+    game.addVisual(texto_ataque)
+    game.addVisual(textodefensa)
+    game.addVisual(escudo1)
+    game.addVisual(pocion1)
+    game.addVisual(moneda1)
+    game.addVisual(portal)
+
+    var personaje = ruben
+
+    keyboard.up().onPressDo({ 
+        personaje.moverseHaciaArriba()
+    })
+    keyboard.down().onPressDo({ 
+        personaje.moverseHaciaAbajo()
+    })
+    keyboard.left().onPressDo({ 
+        personaje.moverseHaciaIzquierda()
+    })
+    keyboard.right().onPressDo({ 
+        personaje.moverseHaciaDerecha()
+    })
+
+
+    game.onCollideDo(enemigo, { personaje => personaje.atacar(enemigo) }  )
+    game.onCollideDo(enemigo2, { personaje => personaje.atacar(enemigo2) } )
+    game.onCollideDo(daga1, { personaje => personaje.agarrar(daga1) }  )
+    game.onCollideDo(pocion1, { personaje => personaje.agarrar(pocion1) } )
+    game.onCollideDo(escudo1, { personaje => personaje.agarrar(escudo1) } )
+    game.onCollideDo(moneda1, { personaje => personaje.agarrar(moneda1) } )
+    game.onCollideDo(portal, { personaje => game.stop() }) // pasar a siguiente nivel
+
+
+    game.start()
 }
