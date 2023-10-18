@@ -1,5 +1,6 @@
 import wollok.game.*
-import ruben.*
+import pjPrincipal.*
+import monstruos.*
 
 program juego {
 	game.title("Juego Base")

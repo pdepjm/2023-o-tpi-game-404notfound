@@ -1,5 +1,7 @@
 import wollok.game.*
-/*/
+import monstruos.*
+
+/*
 object ruben {
 	
 	var property position = game.at(4,0)
@@ -62,19 +64,19 @@ class PjPrincipal{
 		image = "mago.png"
 	}
 	
-	method atacar(enemigo){
+	method atacar(enemigo_){
 		
-		escudo = (self.escudo() - enemigo.nivel()).max(0)
-		enemigo.nuevoNivel((self.escudo() - enemigo.nivel()).abs())
+		escudo = (self.escudo() - enemigo_.nivel()).max(0)
+		enemigo_.nuevoNivel((self.escudo() - enemigo_.nivel()).abs())
 		
-		ataque = (self.ataque() - enemigo.nivel()).max(0)
-		enemigo.nuevoNivel((self.ataque() - enemigo.nivel()).abs())
+		ataque = (self.ataque() - enemigo_.nivel()).max(0)
+		enemigo_.nuevoNivel((self.ataque() - enemigo_.nivel()).abs())
 		
-		vida = (self.vida() - enemigo.nivel()).max(0)
-		enemigo.nuevoNivel((self.vida() - enemigo.nivel()).abs())
+		vida = (self.vida() - enemigo_.nivel()).max(0)
+		enemigo_.nuevoNivel((self.vida() - enemigo_.nivel()).abs())
 		
 		if(!self.tieneVida()){
-			enemigo.mensaje()
+			enemigo_.mensaje()
 		}else{
 			self.boquear()
 		}
@@ -87,21 +89,3 @@ class PjPrincipal{
 
 const ruben = new PjPrincipal(ataque = 3)
 
-class Monstruo {
-	
-	var property position
-	var nivel
-	var imagen
-	/* Cambiar por property */
-	method nivel() = nivel
-	method nuevoNivel(nivel_){
-		nivel = nivel_
-	}
-	method image() = imagen
-	method mensaje(){
-		game.say(self, "A casa loco " /*+ PjNombre.nombre()*/)
-	}
-
-}
-const enemigo = new Monstruo(nivel = 6,position = game.center(), imagen = "ogroLVL3.png")
-const enemigo2 = new Monstruo(nivel = 1,position = game.at(2,3), imagen = "ciclope_preview.png")
