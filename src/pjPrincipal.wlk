@@ -34,7 +34,7 @@ class PjPrincipal{
     var vida = 1
     var monedas = 1
     var property position = game.center()
-    var image = "rubens/ruben_abajo.png"
+    var image = "src/rubens/ruben_abajo.png"
 
     method image() = image
 
@@ -45,62 +45,58 @@ class PjPrincipal{
 
     method moverseHaciaArriba(){
         self.position(position.up(1))
-        image = "rubens/ruben_arriba.png"
+        image = "src/rubens/ruben_arriba.png"
     }
 
     method moverseHaciaAbajo(){
         self.position(position.down(1))
-        image = "rubens/ruben_abajo.png"
+        image = "src/rubens/ruben_abajo.png"
     }
 
     method moverseHaciaIzquierda(){
         self.position(position.left(1))
-image = "rubens/ruben_izquierda.png"
+		image = "src/rubens/ruben_izquierda.png"
     }
 
     method moverseHaciaDerecha(){
         self.position(position.right(1))
-        image = "rubens/rubenderecha.png"
-    }
-    /* Preguntar si es buena practica */
-    method cambiarImagen(){
-        image = "mago.png"
+        image = "src/rubens/ruben_derecha.png"
     }
 
-    method atacar(enemigo){ // estamos repitiendo lógica 😠
+    method atacar(enemigo_){ // estamos repitiendo lógica 😠
 
         var aux
 
         aux = defensa
 
-        defensa = (self.defensa() - enemigo.nivel()).max(0)
-        enemigo.nuevoNivel((enemigo.nivel()- aux).max(0))
+        defensa = (self.defensa() - enemigo_.nivel()).max(0)
+        enemigo_.nuevoNivel((enemigo_.nivel()- aux).max(0))
 
         aux = ataque
 
-        ataque = (self.ataque() - enemigo.nivel()).max(0)
-        enemigo.nuevoNivel((enemigo.nivel() - aux).max(0))
+        ataque = (self.ataque() - enemigo_.nivel()).max(0)
+        enemigo_.nuevoNivel((enemigo_.nivel() - aux).max(0))
 
         aux = vida
 
-        vida = (self.vida() - enemigo.nivel()).max(0)
-        enemigo.nuevoNivel((enemigo.nivel() - aux).max(0))
+        vida = (self.vida() - enemigo_.nivel()).max(0)
+        enemigo_.nuevoNivel((enemigo_.nivel() - aux).max(0))
 
         if(!self.tieneVida())
         {
-            enemigo.mensaje()
+            enemigo_.mensaje()
             //GAME OVER
         }
         else
         {
-            if(enemigo.image() == "monstruos/cenizas.png") 
+            if(enemigo_.image() == "src/monstruos/cenizas.png") 
             {
 
             }
             else 
             {
                 self.boquear()
-                enemigo.morir()
+                enemigo_.morir()
             }
         }
     }
@@ -119,7 +115,7 @@ image = "rubens/ruben_izquierda.png"
     }
 
     method boquear(){
-        game.say(self, "A casa bicho raro" /+ PjNombre.nombre()/)
+        game.say(self, "A casa bicho raro" /*+ PjNombre.nombre()*/)
     }
     method tieneVida() = self.vida() > 0 
 }

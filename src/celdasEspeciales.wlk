@@ -6,7 +6,7 @@ import inventario.*
 
 object portal {
 
-    const imagen = "portal.png"
+    const imagen = "src/items/portal.png"
 
     var property position = game.at(4,10)
 
