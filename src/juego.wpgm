@@ -1,8 +1,33 @@
 import wollok.game.*
-import pepita.*
+import ruben.*
 
 program juego {
 	game.title("Juego Base")
-	game.addVisual(pepita)
+
+	game.width(9)
+	game.height(9)
+	
+	game.addVisual(ruben)
+	game.addVisual(enemigo)
+	game.addVisual(enemigo2)
+	
+	var personaje = ruben
+	keyboard.up().onPressDo({ 
+		personaje.moverseHaciaArriba()
+	})
+	keyboard.down().onPressDo({ 
+		personaje.moverseHaciaAbajo()
+	})
+	keyboard.left().onPressDo({ 
+		personaje.moverseHaciaIzquierda()
+	})
+	keyboard.right().onPressDo({ 
+		personaje.moverseHaciaDerecha()
+	})
+	
+	
+	game.onCollideDo(enemigo, { personaje_ => personaje_.atacar(enemigo) }  )
+	game.onCollideDo(enemigo2, { personaje_ => personaje_.atacar(enemigo2) }  )
+	
 	game.start()
 }
