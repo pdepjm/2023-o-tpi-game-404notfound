@@ -21,9 +21,9 @@ class Monstruo {
 
     method morir()
     {
-        imagen = "src/monstruos/cenizas.png"
+        imagen = "assets/monstruos/cenizas.png"
     }
 
 }
-const enemigo = new Monstruo(nivel = 3,position = game.at(0,3), imagen = "src/monstruos/ogroLVL3.png")
-const enemigo2 = new Monstruo(nivel = 1,position = game.at(4,3), imagen = "src/monstruos/ciclope_preview.png")
+const enemigo = new Monstruo(nivel = 3,position = game.at(0,3), imagen = "assets/monstruos/ogroLVL3.png")
+const enemigo2 = new Monstruo(nivel = 1,position = game.at(4,3), imagen = "assets/monstruos/ciclope_preview.png")

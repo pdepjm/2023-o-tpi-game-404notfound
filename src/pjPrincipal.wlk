@@ -32,9 +32,9 @@ class PjPrincipal{
     var ataque = 1
     var defensa = 1
     var vida = 1
-    var monedas = 1
+    var monedas = 0
     var property position = game.center()
-    var image = "src/rubens/ruben_abajo.png"
+    var image = "assets/rubens/ruben_abajo.png"
 
     method image() = image
 
@@ -45,22 +45,22 @@ class PjPrincipal{
 
     method moverseHaciaArriba(){
         self.position(position.up(1))
-        image = "src/rubens/ruben_arriba.png"
+        image = "assets/rubens/ruben_arriba.png"
     }
 
     method moverseHaciaAbajo(){
         self.position(position.down(1))
-        image = "src/rubens/ruben_abajo.png"
+        image = "assets/rubens/ruben_abajo.png"
     }
 
     method moverseHaciaIzquierda(){
         self.position(position.left(1))
-		image = "src/rubens/ruben_izquierda.png"
+		image = "assets/rubens/ruben_izquierda.png"
     }
 
     method moverseHaciaDerecha(){
         self.position(position.right(1))
-        image = "src/rubens/ruben_derecha.png"
+        image = "assets/rubens/ruben_derecha.png"
     }
 
     method atacar(enemigo_){ // estamos repitiendo lógica 😠
@@ -89,7 +89,7 @@ class PjPrincipal{
         }
         else
         {
-            if(enemigo_.image() == "src/monstruos/cenizas.png") 
+            if(enemigo_.image() == "assets/monstruos/cenizas.png") 
             {
 
             }

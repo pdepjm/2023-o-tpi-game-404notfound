@@ -11,7 +11,7 @@ program juego {
     game.width(9)
     game.height(11)
 
-    game.boardGround("src/fondo1.jpg") 
+    game.boardGround("assets/fondo/fondo1.jpg") 
 
     game.addVisual(ruben)
     game.addVisual(enemigo)
