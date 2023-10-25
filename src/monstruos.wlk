@@ -6,17 +6,17 @@ import inventario.*
 class Monstruo {
 
     var property position
-    var nivel
+	var nivel
     var imagen
 
-    /* Cambiar por property /
+    /* Cambiar por property */
     method nivel() = nivel
-    method nuevoNivel(nivel){
-        nivel = nivel
+    method nuevoNivel(nivel_){
+        nivel = nivel_
     }
     method image() = imagen
     method boquear(){
-        game.say(self, "A casa loco " /+ PjNombre.nombre()*/)
+        game.say(self, "A casa loco " /*+ PjNombre.nombre()*/)
     }
 
     method morir()

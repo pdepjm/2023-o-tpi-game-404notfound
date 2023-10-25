@@ -30,7 +30,7 @@ class Escudo {
     method defensa() = defensa
 
     method esAgarrado(personaje){
-        personaje.ataque(personaje.ataque() + defensa) 
+        personaje.defensa(personaje.defensa() + defensa) 
     }
 
 }
@@ -44,10 +44,11 @@ class Moneda {
 
     method image() = imagen
 
-    method ataque() = 0
-    method defensa() = 0
-    method vida() = 0
     method monedas() = cantidad
+    
+    method esAgarrado(personaje){
+        personaje.monedas(personaje.monedas() + cantidad) 
+    }
 }
 
 class Pocion {
@@ -58,10 +59,11 @@ class Pocion {
 
     method image() = imagen
 
-    method ataque() = 0
-    method defensa() = 0
     method vida() = potencia
-    method monedas() = 0
+
+    method esAgarrado(personaje){
+        personaje.vida(personaje.vida() + potencia) 
+    }
 
 }
 
