@@ -11,11 +11,12 @@ class Daga {
     var property position
 
     method image() = imagen
-
+    
     method ataque() = ataque
-    method defensa() = 0
-    method vida() = 0
-    method monedas() = 0
+        
+    method esAgarrado(personaje){
+        personaje.ataque(personaje.ataque() + ataque) 
+    }
 }
 
 class Escudo {
@@ -26,10 +27,11 @@ class Escudo {
 
     method image() = imagen
 
-    method ataque() = 0
     method defensa() = defensa
-    method vida() = 0
-    method monedas() = 0
+
+    method esAgarrado(personaje){
+        personaje.ataque(personaje.ataque() + defensa) 
+    }
 
 }
 
