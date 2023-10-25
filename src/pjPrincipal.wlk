@@ -61,16 +61,9 @@ class PjPrincipal{
 
     method agarrar(item)
     {
-        self.actualizarEstadisticas(item)
+    	item.esAgarrado(self)
     }
 
-    method actualizarEstadisticas(item)
-    {
-        ataque += item.ataque()
-        defensa += item.defensa()
-        vida += item.vida()
-        monedas += item.monedas()
-    }
 
     method boquear(){
 	        game.say(self, "A casa bicho raro" /*+ PjNombre.nombre()*/)		

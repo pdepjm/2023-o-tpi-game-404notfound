@@ -3,31 +3,15 @@ import pjPrincipal.*
 import monstruos.*
 import items.*
 import inventario.*
-import celdasEspeciales.*
+import tablero.*
 
 program juego {
     game.title("La aventura del Robot Ruben")
 
-    game.width(9)
-    game.height(11)
-
-    game.boardGround("assets/fondo/fondo1.jpg") 
-
-    game.addVisual(ruben)
-    game.addVisual(enemigo)
-    game.addVisual(enemigo2)
-    game.addVisual(daga1)
-    game.addVisual(texto_monedas)
-    game.addVisual(texto_vidas)
-    game.addVisual(texto_ataque)
-    game.addVisual(texto_defensa)
-    game.addVisual(escudo1)
-    game.addVisual(pocion1)
-    game.addVisual(moneda1)
-    game.addVisual(portal)
-
     var personaje = ruben
-
+    tablero.cargarVisuales()
+	tablero.dimension()
+	
     keyboard.up().onPressDo({ 
         personaje.moverseHaciaArriba()
     })
@@ -41,14 +25,10 @@ program juego {
         personaje.moverseHaciaDerecha()
     })
 
-
+	// Cuando el personaje se choca con lo que sea, se disparan los dos collide y creamos metodos de mas 
     game.onCollideDo(personaje, { enemigo_ => enemigo_.esAtacado(personaje) }  )
-    //game.onCollideDo(enemigo2, { personaje => personaje.atacar(enemigo2) } )
-    //game.onCollideDo(daga1, { personaje => personaje.agarrar(daga1) }  )
-    //game.onCollideDo(pocion1, { personaje => personaje.agarrar(pocion1) } )
-    //game.onCollideDo(escudo1, { personaje => personaje.agarrar(escudo1) } )
-    //game.onCollideDo(moneda1, { personaje => personaje.agarrar(moneda1) } )
-    //game.onCollideDo(portal, { personaje => game.stop() }) // pasar a siguiente nivel
+    game.onCollideDo(personaje, { item_ => item_.esAgarrado(personaje) }  )
+    //game.onCollideDo(personaje, { portal_ => game.stop() }) // pasar a siguiente nivel
 
 
     game.start()

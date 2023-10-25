@@ -2,7 +2,7 @@ import wollok.game.*
 import pjPrincipal.*
 import monstruos.*
 import inventario.*
-import celdasEspeciales.*
+import tablero.*
 
 class Daga {
 
@@ -13,9 +13,13 @@ class Daga {
     method image() = imagen
     
     method ataque() = ataque
-        
+    
     method esAgarrado(personaje){
         personaje.ataque(personaje.ataque() + ataque) 
+    }
+    
+    method esAtacado(personaje){
+    	// Se supone que este metodo no haga nada
     }
 }
 
@@ -31,6 +35,9 @@ class Escudo {
 
     method esAgarrado(personaje){
         personaje.defensa(personaje.defensa() + defensa) 
+    }
+    method esAtacado(personaje){
+    	// Se supone que este metodo no haga nada
     }
 
 }
@@ -49,6 +56,9 @@ class Moneda {
     method esAgarrado(personaje){
         personaje.monedas(personaje.monedas() + cantidad) 
     }
+    method esAtacado(personaje){
+    	// Se supone que este metodo no haga nada
+    }
 }
 
 class Pocion {
@@ -64,7 +74,9 @@ class Pocion {
     method esAgarrado(personaje){
         personaje.vida(personaje.vida() + potencia) 
     }
-
+    method esAtacado(personaje){
+    	// Se supone que este metodo no haga nada
+    }
 }
 
 const daga1 = new Daga(ataque = 1, imagen = "assets/dagas/dagaLVL1.png", position = game.at(2,2))
