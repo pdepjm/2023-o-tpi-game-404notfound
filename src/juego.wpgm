@@ -11,8 +11,7 @@ program juego {
     game.width(9)
 	game.height(11)
 	
-    tablero.generarObjeto()
-    tablero.generarObjeto()
+    tablero.generarObjetosTablero()
     tablero.cargarVisuales()
     
     var personaje = ruben

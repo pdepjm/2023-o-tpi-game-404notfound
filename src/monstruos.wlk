@@ -52,5 +52,3 @@ class Monstruo {
     }
 
 }
-const enemigo = new Monstruo(nivel = 2,position = game.at(0,3), imagen = "assets/monstruos/monstruo2.png")
-const enemigo2 = new Monstruo(nivel = 1,position = game.at(4,3), imagen = "assets/monstruos/monstruo1.png")
