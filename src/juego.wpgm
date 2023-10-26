@@ -8,9 +8,14 @@ import tablero.*
 program juego {
     game.title("La aventura del Robot Ruben")
 
-    var personaje = ruben
+    game.width(9)
+	game.height(11)
+	
+    tablero.generarObjeto()
+    tablero.generarObjeto()
     tablero.cargarVisuales()
-	tablero.dimension()
+    
+    var personaje = ruben
 	
     keyboard.up().onPressDo({ 
         personaje.moverseHaciaArriba()

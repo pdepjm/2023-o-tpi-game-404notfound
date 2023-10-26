@@ -15,7 +15,9 @@ class Daga {
     method ataque() = ataque
     
     method esAgarrado(personaje){
-        personaje.ataque(personaje.ataque() + ataque) 
+        personaje.ataque(personaje.ataque() + ataque)
+        ataque = 0
+        imagen = "assets/items/vacio.png" 
     }
     
     method esAtacado(personaje){
@@ -34,7 +36,9 @@ class Escudo {
     method defensa() = defensa
 
     method esAgarrado(personaje){
-        personaje.defensa(personaje.defensa() + defensa) 
+        personaje.defensa(personaje.defensa() + defensa)
+        defensa = 0
+        imagen = "assets/items/vacio.png"
     }
     method esAtacado(personaje){
     	// Se supone que este metodo no haga nada
@@ -55,6 +59,8 @@ class Moneda {
     
     method esAgarrado(personaje){
         personaje.monedas(personaje.monedas() + cantidad) 
+        cantidad = 0
+        imagen = "assets/items/vacio.png"
     }
     method esAtacado(personaje){
     	// Se supone que este metodo no haga nada
@@ -72,7 +78,9 @@ class Pocion {
     method vida() = potencia
 
     method esAgarrado(personaje){
-        personaje.vida(personaje.vida() + potencia) 
+        personaje.vida(personaje.vida() + potencia)
+     	potencia = 0
+     	imagen = "assets/items/vacio.png"
     }
     method esAtacado(personaje){
     	// Se supone que este metodo no haga nada
