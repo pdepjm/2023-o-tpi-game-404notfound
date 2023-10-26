@@ -87,6 +87,24 @@ class Pocion {
     }
 }
 
+class Pinches {
+
+    var nivel
+    var imagen
+    var property position
+
+    method image() = imagen
+
+    method esAgarrado(personaje){
+        personaje.vida((personaje.vida() - nivel).max(0))
+     	nivel = 0
+     	imagen = "assets/items/vacio.png"
+    }
+    method esAtacado(personaje){
+    	// Se supone que este metodo no haga nada
+    }
+}
+
 const daga1 = new Daga(ataque = 1, imagen = "assets/dagas/dagaLVL1.png", position = game.at(2,2))
 const escudo1 = new Escudo(defensa = 1, imagen = "assets/items/escudoAzul.png", position = game.at(4,2))
 const moneda1 = new Moneda(cantidad = 1, imagen = "assets/items/falsaMoneda.png", position = game.at(7,2))

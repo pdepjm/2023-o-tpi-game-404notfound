@@ -24,7 +24,7 @@ object tablero {
 
 	method generarObjeto(){
 		
-		const numero = (0.randomUpTo(7)).roundUp()
+		const numero = 8 //(0.randomUpTo(8)).roundUp()
 		if(numero == 1){
 			const monstruo1 = new Monstruo(nivel = 1,position = game.at(0,6), imagen = "assets/monstruos/monstruo1.png")
 			game.addVisual(monstruo1)			
@@ -52,6 +52,10 @@ object tablero {
 		if(numero == 7){
 			const moneda1 = new Moneda(cantidad = 1, imagen = "assets/items/falsaMoneda.png", position = game.at(7,7))
 			game.addVisual(moneda1)			
+		}
+		if(numero == 8){
+			const pinches1 = new Pinches(nivel = 1, imagen = "assets/items/pinchos1.png", position = game.at(8,8))
+			game.addVisual(pinches1)			
 		}
 	}
 	
