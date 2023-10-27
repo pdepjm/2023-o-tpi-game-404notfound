@@ -10,6 +10,7 @@ class PjPrincipal{
     var property defensa = 1
     var property vida = 1
     var property monedas = 0
+    var property puntuacion = 0
     
     var property position = game.at(4,2)
     var image = "assets/rubens/ruben_abajo.png"
@@ -48,15 +49,19 @@ class PjPrincipal{
 
         aux = defensa
         defensa = (self.defensa() - enemigo_.nivel()).max(0)
+        self.puntuacion(puntuacion + enemigo_.nivel() * 10)    
 		enemigo_.nuevoNivel((enemigo_.nivel() - aux).max(0))     
         
         aux = ataque
         ataque = (self.ataque() - enemigo_.nivel()).max(0)
+        self.puntuacion(puntuacion + enemigo_.nivel() * 10)    
 		enemigo_.nuevoNivel((enemigo_.nivel() - aux).max(0))    
         
         aux = vida
         vida = (self.vida() - enemigo_.nivel()).max(0)
-		enemigo_.nuevoNivel((enemigo_.nivel() - aux).max(0))    
+        self.puntuacion(puntuacion + enemigo_.nivel() * 10)    
+		enemigo_.nuevoNivel((enemigo_.nivel() - aux).max(0))
+		
 	}	
 	
 

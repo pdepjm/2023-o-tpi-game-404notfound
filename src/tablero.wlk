@@ -80,7 +80,8 @@ object tablero {
 	    game.addVisual(texto_vidas)
 	    game.addVisual(texto_ataque)
 	    game.addVisual(texto_defensa)
-	    game.addVisual(dealer)
+	    game.addVisual(texto_puntuacion)
+	    //game.addVisual(dealer)
 	    game.addVisual(portal)
 	    game.addVisual(ruben)
 	}

@@ -31,3 +31,10 @@ object texto_monedas {
 
     method text() = "Monedas: " + ruben.monedas()
 }
+
+object texto_puntuacion {
+
+    method position() = game.at(0,1)
+
+    method text() = "Puntuacion: " + ruben.puntuacion()
+}
