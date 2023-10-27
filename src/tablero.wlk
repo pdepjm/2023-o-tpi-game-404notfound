@@ -14,6 +14,10 @@ object portal {
 
     method image() = imagen
 	method columna() = columna
+	
+	method esAtacado(personaje){}
+	
+	method esAgarrado(personaje){}
 }
 
 object tablero {
@@ -50,19 +54,19 @@ object tablero {
 				game.addVisual(monstruo3)			
 			}
 			if(numero == 4){
-				const vida1 = new Pocion(nivel = 1, imagen = "assets/items/falsaPocion.png", position = game.at(columna,fila))
+				const vida1 = new Pocion(nivel = 1, imagen = "assets/items/pocion1.png", position = game.at(columna,fila))
 				game.addVisual(vida1)			
 			}
 			if(numero == 5){
-				const daga1 = new Daga(nivel = 1, imagen = "assets/dagas/dagaLVL1.png", position = game.at(columna,fila))
+				const daga1 = new Daga(nivel = 1, imagen = "assets/items/espada1.png", position = game.at(columna,fila))
 				game.addVisual(daga1)			
 			}
 			if(numero == 6){
-				const escudo1 = new Escudo(nivel = 1, imagen = "assets/items/escudoAzul.png", position = game.at(columna,fila))
+				const escudo1 = new Escudo(nivel = 1, imagen = "assets/items/escudo1.png", position = game.at(columna,fila))
 				game.addVisual(escudo1)			
 			}
 			if(numero == 7){
-				const moneda1 = new Moneda(nivel = 1, imagen = "assets/items/falsaMoneda.png", position = game.at(columna,fila))
+				const moneda1 = new Moneda(nivel = 1, imagen = "assets/items/moneda1.png", position = game.at(columna,fila))
 				game.addVisual(moneda1)			
 			}
 			if(numero == 8){
