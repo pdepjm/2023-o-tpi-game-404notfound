@@ -3,6 +3,7 @@ import monstruos.*
 import items.*
 import pjPrincipal.*
 import inventario.*
+import dealer.*
 
 object portal {
 
@@ -79,8 +80,8 @@ object tablero {
 	    game.addVisual(texto_vidas)
 	    game.addVisual(texto_ataque)
 	    game.addVisual(texto_defensa)
+	    game.addVisual(dealer)
 	    game.addVisual(portal)
-	    //game.removeVisual(game.getObjectsIn(game.at(4,2)))
 	    game.addVisual(ruben)
 	}
 

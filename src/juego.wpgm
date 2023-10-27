@@ -4,6 +4,7 @@ import monstruos.*
 import items.*
 import inventario.*
 import tablero.*
+import dealer.*
 
 program juego {
     game.title("La aventura del Robot Ruben")
@@ -11,7 +12,7 @@ program juego {
     game.width(9)
 	game.height(11)
 	
-    tablero.generarObjetosTablero()
+//    tablero.generarObjetosTablero()
     tablero.cargarVisuales()
     
     var personaje = ruben
@@ -32,6 +33,7 @@ program juego {
 	// Cuando el personaje se choca con lo que sea, se disparan los dos collide y creamos metodos de mas 
     game.onCollideDo(personaje, { enemigo_ => enemigo_.esAtacado(personaje) }  )
     game.onCollideDo(personaje, { item_ => item_.esAgarrado(personaje) }  )
+    game.onCollideDo(personaje, { dealer_ => dealer_.mostrarOfertas(personaje) }  )
     //game.onCollideDo(personaje, { portal_ => game.stop() }) // pasar a siguiente nivel
 
 

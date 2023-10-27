@@ -2,6 +2,7 @@ import wollok.game.*
 import monstruos.*
 import items.*
 import inventario.*
+import dealer.*
 
 class PjPrincipal{
 
