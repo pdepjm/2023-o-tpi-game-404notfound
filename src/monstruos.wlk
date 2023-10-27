@@ -21,21 +21,22 @@ class Monstruo {
 
     method morir()
     {
-        // Tratar de Eliminar el Objeto Monstruo
+        // Tratar de Eliminar el Objeto Monstruo usando removeVisual()
         imagen = "assets/monstruos/cenizas.png"
     }
 
     method esAtacado(atacante){
 
-        //const poderTotalOriginal = atacante.poderTotal()
-        atacante.defendete(self) 
-        //self.nuevoNivel((self.nivel() - poderTotalOriginal).max(0))
-        self.resultadoBatalla(atacante)
+        if(atacante.tieneVida() and self.sobrevivio()){
+        	atacante.defendete(self) 
+        	self.resultadoBatalla(atacante)        	
+        }
     }
 
     method sobrevivio() = self.nivel() > 0
 
     method resultadoBatalla(atacante){
+    	
         if(self.sobrevivio()){
             self.boquear()
             atacante.morir()

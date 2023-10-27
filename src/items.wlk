@@ -66,6 +66,7 @@ class Pinches inherits Items{
 
     override method esAgarrado(personaje){
         personaje.vida((personaje.vida() - nivel).max(0))
+        personaje.estasVivo()
     }
 
 }

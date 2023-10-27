@@ -10,7 +10,7 @@ class PjPrincipal{
     var property vida = 1
     var property monedas = 0
     
-    var property position = game.center()
+    var property position = game.at(4,2)
     var image = "assets/rubens/ruben_abajo.png"
 
     method image() = image
@@ -74,6 +74,12 @@ class PjPrincipal{
     method morir(){
     	image = "assets/monstruos/cenizas.png"
     	//GAME OVER
+    }
+    
+    method estasVivo(){
+    	if(!self.tieneVida()){
+    		self.morir()
+    	}
     }
 }
 const ruben = new PjPrincipal()
