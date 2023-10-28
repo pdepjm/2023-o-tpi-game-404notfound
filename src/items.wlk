@@ -71,3 +71,31 @@ class Pinches inherits Items{
     }
 
 }
+
+class PowerUp {
+	
+	const imagen
+
+    method image() = imagen
+	
+	method esUsado(personaje)
+
+}
+
+const powerUp1 = new PowerUp(imagen = "assets/items/powerUp1.png")
+	
+	method esUsado(personaje)
+	{
+		personaje.vida(personaje.vida() + 1)
+		personaje.defensa(personaje.defensa() + 1)
+		personaje.ataque(personaje.ataque() + 1)
+	}	
+
+const powerUp2 = new PowerUp(imagen = "assets/items/powerUp2.png"){
+	
+	method esUsado(personaje)
+	{
+		personaje.vidaMax(personaje.vidaMax() + 1)
+	}	
+	
+}

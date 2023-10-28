@@ -9,6 +9,7 @@ class PjPrincipal{
     var property ataque = 1
     var property defensa = 1
     var property vida = 1
+	var property vidaMax = 3
     var property monedas = 0
     var property puntuacion = 0
     
@@ -19,7 +20,7 @@ class PjPrincipal{
 
     method ataque() = ataque.min(5)
     method defensa() = defensa.min(5)
-    method vida() = vida.min(3)
+    method vida() = vida.min(vidaMax)
     method monedas() = monedas
 	method poderTotal() = ataque + defensa + vida
 	
@@ -79,6 +80,7 @@ class PjPrincipal{
     
     method morir(){
     	image = "assets/monstruos/cenizas.png"
+    	game.stop()
     	//GAME OVER
     }
     
