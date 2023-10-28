@@ -31,20 +31,16 @@ class PjPrincipal{
 	method dobleMovimiento(){
 		if (dobleMovimiento_) {
 	 	keyboard.up().onPressDo({ 
-	        self.moverseHaciaArriba()
-	        self.moverseHaciaArriba()
+        	self.position(position.up(1))
 	    })
 	    keyboard.down().onPressDo({ 
-	        self.moverseHaciaAbajo()
-	        self.moverseHaciaAbajo()
+        	self.position(position.down(1))
 	    })
 	    keyboard.left().onPressDo({ 
-	        self.moverseHaciaIzquierda()
-	        self.moverseHaciaIzquierda()
+        self.position(position.left(1))
 	    })
 	    keyboard.right().onPressDo({ 
-	        self.moverseHaciaDerecha()
-	        self.moverseHaciaDerecha()
+        self.position(position.right(1))
 	    })
 	    self.dobleMovimiento_(false)
 	    }
