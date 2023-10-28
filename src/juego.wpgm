@@ -30,6 +30,22 @@ program juego {
     keyboard.right().onPressDo({ 
         personaje.moverseHaciaDerecha()
     })
+    
+    keyboard.z().onPressDo({
+        powerUp1.esUsado(ruben)
+    })
+
+    keyboard.x().onPressDo({
+        powerUp2.esUsado(ruben)
+    })
+    
+    keyboard.c().onPressDo({
+        powerUp3.esUsado(ruben)
+    })
+    
+    keyboard.v().onPressDo({
+        powerUp4.esUsado(ruben)
+    })
 
 	// Cuando el personaje se choca con lo que sea, se disparan los dos collide y creamos metodos de mas 
     game.onCollideDo(personaje, { enemigo_ => enemigo_.esAtacado(personaje) }  )

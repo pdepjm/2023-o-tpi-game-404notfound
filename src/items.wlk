@@ -81,9 +81,11 @@ object powerUp1 {
 	
 	method esUsado(personaje)
 	{
-		personaje.vida(personaje.vida() + 1)
-		personaje.defensa(personaje.defensa() + 1)
-		personaje.ataque(personaje.ataque() + 1)
+		if (personaje.tiene(self)){
+			personaje.vida(personaje.vida() + 1)
+			personaje.defensa(personaje.defensa() + 1)
+			personaje.ataque(personaje.ataque() + 1)
+		}
 	}	
 	
 }
@@ -96,10 +98,41 @@ object powerUp2 {
 	
 	method esUsado(personaje)
 	{
+		if (personaje.tiene(self)){
 		personaje.vidaMax(personaje.vidaMax() + 1)
+		}
 	}	
 	
 }
 
+
+object powerUp3 {
+	
+	const imagen = "assets/items/powerUp3.png"
+	
+	method image() = imagen
+	
+	method esUsado(personaje)
+	{
+		if (personaje.tiene(self)){
+			tablero.nivelMonstruo(1)
+		}
+	}	
+}
+
+object powerUp4 {
+	
+	const imagen = "assets/items/powerUp4.png"
+	
+	method image() = imagen
+	
+	method esUsado(personaje)
+	{
+		//if (personaje.tiene(self)){
+		personaje.dobleMovimiento_(true)
+		personaje.dobleMovimiento()
+		//}
+	}	
+}
 	
 

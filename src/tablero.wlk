@@ -22,7 +22,9 @@ object portal {
 
 object tablero {
 	
-//	const image = "assets/items/portal.png"
+	var nivelMonstruo = 2
+	
+	method nivelMonstruo(nuevoNivel) {nivelMonstruo = nuevoNivel} 
 
 	method generarObjetosTablero(){
 		
@@ -46,7 +48,7 @@ object tablero {
 				game.addVisual(monstruo1)			
 			}
 			if(numero == 2){
-				const monstruo2 = new Monstruo(nivel = 2,position = game.at(columna,fila), imagen = "assets/monstruos/monstruo2.png")
+				const monstruo2 = new Monstruo(nivel = nivelMonstruo,position = game.at(columna,fila), imagen = "assets/monstruos/monstruo2.png")
 				game.addVisual(monstruo2)			
 			}
 			if(numero == 3){

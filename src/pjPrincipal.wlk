@@ -13,9 +13,12 @@ class PjPrincipal{
     var property monedas = 0
     var property puntuacion = 0
     
+    var property dobleMovimiento_ = false
+    
     var property position = game.at(4,2)
+    
     var image = "assets/rubens/ruben_abajo.png"
-
+    
     method image() = image
 
     method ataque() = ataque.min(5)
@@ -23,7 +26,30 @@ class PjPrincipal{
     method vida() = vida.min(vidaMax)
     method monedas() = monedas
 	method poderTotal() = ataque + defensa + vida
+	method tiene(powerUp) = false
 	
+	method dobleMovimiento(){
+		if (dobleMovimiento_) {
+	 	keyboard.up().onPressDo({ 
+	        self.moverseHaciaArriba()
+	        self.moverseHaciaArriba()
+	    })
+	    keyboard.down().onPressDo({ 
+	        self.moverseHaciaAbajo()
+	        self.moverseHaciaAbajo()
+	    })
+	    keyboard.left().onPressDo({ 
+	        self.moverseHaciaIzquierda()
+	        self.moverseHaciaIzquierda()
+	    })
+	    keyboard.right().onPressDo({ 
+	        self.moverseHaciaDerecha()
+	        self.moverseHaciaDerecha()
+	    })
+	    self.dobleMovimiento_(false)
+	    }
+	}
+		
     method moverseHaciaArriba(){
         self.position(position.up(1))
         image = "assets/rubens/ruben_arriba.png"
