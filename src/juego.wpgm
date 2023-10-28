@@ -9,9 +9,9 @@ import dealer.*
 program juego {
 	
     game.title("La aventura del Robot Ruben")
-
     game.width(9)
 	game.height(11)
+	
 	
     tablero.generarObjetosTablero()
     tablero.cargarVisuales()

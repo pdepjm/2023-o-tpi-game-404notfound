@@ -40,7 +40,7 @@ object tablero {
 		if((columna == 4 and fila == 2) or (columna == portal.columna() and fila == 10)){
 			
 		}else{
-			const numero = (0.randomUpTo(8)).roundUp()
+			const numero = (0.randomUpTo(13)).roundUp()
 			if(numero == 1){
 				const monstruo1 = new Monstruo(nivel = 1,position = game.at(columna,fila), imagen = "assets/monstruos/monstruo1.png")
 				game.addVisual(monstruo1)			
@@ -55,21 +55,42 @@ object tablero {
 			}
 			if(numero == 4){
 				const vida1 = new Pocion(nivel = 1, imagen = "assets/items/pocion1.png", position = game.at(columna,fila))
-				game.addVisual(vida1)			
+				game.addVisual(vida1)
+							
 			}
 			if(numero == 5){
+				const vida2 = new Pocion(nivel = 2, imagen = "assets/items/pocion2.png", position = game.at(columna,fila))
+				game.addVisual(vida2)			
+			}
+			if(numero == 6){
 				const daga1 = new Daga(nivel = 1, imagen = "assets/items/espada1.png", position = game.at(columna,fila))
 				game.addVisual(daga1)			
 			}
-			if(numero == 6){
+			if(numero == 7){
+				const daga2 = new Daga(nivel = 2, imagen = "assets/items/espada2.png", position = game.at(columna,fila))
+				game.addVisual(daga2)			
+			}
+			if(numero == 8){
+				const daga3 = new Daga(nivel = 3, imagen = "assets/items/espada3.png", position = game.at(columna,fila))
+				game.addVisual(daga3)			
+			}
+			if(numero == 9){
 				const escudo1 = new Escudo(nivel = 1, imagen = "assets/items/escudo1.png", position = game.at(columna,fila))
 				game.addVisual(escudo1)			
 			}
-			if(numero == 7){
+			if(numero == 10){
+				const escudo2 = new Escudo(nivel = 2, imagen = "assets/items/escudo2.png", position = game.at(columna,fila))
+				game.addVisual(escudo2)			
+			}
+			if(numero == 11){
+				const escudo3 = new Escudo(nivel = 3, imagen = "assets/items/escudo3.png", position = game.at(columna,fila))
+				game.addVisual(escudo3)			
+			}
+			if(numero == 12){
 				const moneda1 = new Moneda(nivel = 1, imagen = "assets/items/moneda1.png", position = game.at(columna,fila))
 				game.addVisual(moneda1)			
 			}
-			if(numero == 8){
+			if(numero == 13){
 				const pinches1 = new Pinches(nivel = 1, imagen = "assets/items/pinchos1.png", position = game.at(columna,fila))
 				game.addVisual(pinches1)			
 			}
