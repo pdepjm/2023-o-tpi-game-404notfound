@@ -51,5 +51,7 @@ class Monstruo {
     method esAgarrado(nada){
     	// Se supone que este metodo no haga nada
     }
+    
+    method generarNivel() {}
 
 }

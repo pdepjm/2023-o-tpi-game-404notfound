@@ -15,6 +15,13 @@ object portal {
     method image() = imagen
 	method columna() = columna
 	
+	method generarNivel() {
+		
+		tablero.limpiarse()
+		tablero.generarObjetosTablero()
+    	tablero.cargarVisuales()
+	}
+	
 	method esAtacado(personaje){}
 	
 	method esAgarrado(personaje){}
@@ -98,8 +105,17 @@ object tablero {
 			}
 			
 		}
+			
+}
+			
+	method limpiarse() {
+			new Range(start = 2, end = game.width()+1).forEach{
+			fila => new Range(start = 0, end = game.height()).forEach{
+				columna => game.removeVisual(game.getObjectsIn((game.at(columna,fila))))
+			}}
 
 	}
+	
 
 	method cargarVisuales(){
 	    game.boardGround("assets/fondo/fondo1.jpg") 

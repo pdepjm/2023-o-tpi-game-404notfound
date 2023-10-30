@@ -20,6 +20,7 @@ class Items{
     	// Se supone que este metodo no haga nada
     }
     
+    method generarNivel() {}
 }
 class Daga inherits Items{
 

@@ -12,7 +12,6 @@ program juego {
     game.width(9)
 	game.height(11)
 	
-	
     tablero.generarObjetosTablero()
     tablero.cargarVisuales()
     
@@ -51,7 +50,7 @@ program juego {
     game.onCollideDo(personaje, { enemigo_ => enemigo_.esAtacado(personaje) }  )
     game.onCollideDo(personaje, { item_ => item_.esAgarrado(personaje) }  )
     //game.onCollideDo(personaje, { dealer_ => dealer_.mostrarOfertas(personaje) }  )
-    //game.onCollideDo(personaje, { portal_ => game.stop() }) // pasar a siguiente nivel
+    game.onCollideDo(personaje, { portal_ => portal_.generarNivel() }) // pasar a siguiente nivel
 
 
     game.start()
