@@ -75,14 +75,22 @@ class Pinches inherits Items{
 
 }
 
-
-object powerUp1 {
+class PowerUp {
 	
-	const imagen = "assets/items/powerUp1.png"
+	const imagen
+	const precio
+	const position
 	
+	method position() = position
 	method image() = imagen
-	
+	method precio() = precio
 	method esUsado(personaje)
+	
+}
+// Aumentar en 1 cada Item que tenga menos las monedas
+class PowerUp1 inherits PowerUp{
+	
+	override method esUsado(personaje)
 	{
 		if (personaje.tiene(self)){
 			personaje.vida(personaje.vida() + 1)
@@ -93,13 +101,10 @@ object powerUp1 {
 	
 }
 
-object powerUp2 {
+// Aumenta la vida maxima. Caso Base de 3 a 4 corazones
+class PowerUp2 inherits PowerUp{
 	
-	const imagen = "assets/items/powerUp2.png"
-	
-	method image() = imagen
-	
-	method esUsado(personaje)
+	override method esUsado(personaje)
 	{
 		if (personaje.tiene(self)){
 		personaje.vidaMax(personaje.vidaMax() + 1)
@@ -108,33 +113,25 @@ object powerUp2 {
 	
 }
 
-
-object powerUp3 {
+// Todos los monstruos pasan a ser de nivel 1
+class PowerUp3 inherits PowerUp{
 	
-	const imagen = "assets/items/powerUp3.png"
-	
-	method image() = imagen
-	
-	method esUsado(personaje)
+	override method esUsado(personaje)
 	{
 		if (personaje.tiene(self)){
 			tablero.nivelMonstruo(1)
 		}
 	}	
 }
-
-object powerUp4 {
+//Moverse 2 casillas
+class PowerUp4 inherits PowerUp{
 	
-	const imagen = "assets/items/powerUp4.png"
-	
-	method image() = imagen
-	
-	method esUsado(personaje)
+	override method esUsado(personaje)
 	{
-		//if (personaje.tiene(self)){
-		personaje.dobleMovimiento_(true)
-		personaje.dobleMovimiento()
-		//}
+		if (personaje.tiene(self)){
+			personaje.dobleMovimiento_(true)
+			personaje.dobleMovimiento()
+		}
 	}	
 }
 	

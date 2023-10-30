@@ -30,7 +30,8 @@ program juego {
     keyboard.right().onPressDo({ 
         personaje.moverseHaciaDerecha()
     })
-    
+/*    
+    // POWER UPs
     keyboard.z().onPressDo({
         powerUp1.esUsado(ruben)
     })
@@ -46,11 +47,11 @@ program juego {
     keyboard.v().onPressDo({
         powerUp4.esUsado(ruben)
     })
-
+*/
 	// Cuando el personaje se choca con lo que sea, se disparan los dos collide y creamos metodos de mas 
     game.onCollideDo(personaje, { enemigo_ => enemigo_.esAtacado(personaje) }  )
     game.onCollideDo(personaje, { item_ => item_.esAgarrado(personaje) }  )
-    //game.onCollideDo(personaje, { dealer_ => dealer_.mostrarOfertas(personaje) }  )
+    game.onCollideDo(personaje, { dealer_ => dealer_.mostrarOfertas(personaje) }  )
     game.onCollideDo(personaje, { portal_ => portal_.generarNivel() }) // pasar a siguiente nivel
     game.onCollideDo(personaje, { pared_ => pared_.esChocado(personaje) })
 

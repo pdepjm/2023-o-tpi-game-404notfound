@@ -14,12 +14,12 @@ class PjPrincipal{
     var property puntuacion = 0
     
     var property dobleMovimiento_ = false
-    
+    var property moverse = true
     var property position = game.at(4,2)
     
     var image = "assets/rubens/ruben_abajo.png"
     
-    var positionAnterior = game.at(4,2)
+    var positionAnterior = position
     
     method image() = image
 
@@ -29,6 +29,7 @@ class PjPrincipal{
     method monedas() = monedas
 	method poderTotal() = ataque + defensa + vida
 	method tiene(powerUp) = false
+	method podesMoverte() = moverse
 	
 	method dobleMovimiento(){
 		if (dobleMovimiento_) {
@@ -49,27 +50,35 @@ class PjPrincipal{
 	}
 		
     method moverseHaciaArriba(){
-    	positionAnterior = position
-        self.position(position.up(1))
-        image = "assets/rubens/ruben_arriba.png"
+    	if(self.podesMoverte()){
+	    	positionAnterior = position
+	        self.position(position.up(1))
+	        image = "assets/rubens/ruben_arriba.png"    		
+    	}
     }
 
     method moverseHaciaAbajo(){
-    	positionAnterior = position
-        self.position(position.down(1))
-        image = "assets/rubens/ruben_abajo.png"
+    	if(self.podesMoverte()){
+	    	positionAnterior = position
+	        self.position(position.down(1))
+	        image = "assets/rubens/ruben_abajo.png"
+    	}
     }
 
     method moverseHaciaIzquierda(){
-    	positionAnterior = position
-        self.position(position.left(1))
-		image = "assets/rubens/ruben_izquierda.png"
+    	if(self.podesMoverte()){
+	    	positionAnterior = position
+	        self.position(position.left(1))
+			image = "assets/rubens/ruben_izquierda.png"    		
+    	}
     }
 
     method moverseHaciaDerecha(){
-    	positionAnterior = position
-        self.position(position.right(1))
-        image = "assets/rubens/ruben_derecha.png"
+    	if(self.podesMoverte()){
+	    	positionAnterior = position
+	        self.position(position.right(1))
+	        image = "assets/rubens/ruben_derecha.png"    		
+    	}    	
     }
 	
     method defendete(enemigo_){ // estamos repitiendo lógica 😠

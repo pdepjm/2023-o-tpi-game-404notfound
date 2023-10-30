@@ -47,6 +47,7 @@ class Pared {
 
 object tablero {
 	
+	// Actualizar el nivel del monstruo - VER
 	var nivelMonstruo = 2
 	
 	method nivelMonstruo(nuevoNivel) {nivelMonstruo = nuevoNivel} 
@@ -63,9 +64,9 @@ object tablero {
 
 	method generarObjeto(columna,fila){
 		
-		    // Posicion Ruben 					Posicion Portal
-		if((columna == 4 and fila == 2) or (columna == portal.columna() and fila == 10)){
-			
+		    // Posicion Ruben 					Posicion Portal									Posicion Dealer
+		if((columna == 4 and fila == 2) or (columna == portal.columna() and fila == 10) or (columna == 4 and fila == 5)){
+			// Se supone que este vacio para que no se generen objetos random en las posiciones de esos objetos
 		}else{
 			const numero = (0.randomUpTo(13)).roundUp()
 			if(numero == 1){
@@ -82,8 +83,7 @@ object tablero {
 			}
 			if(numero == 4){
 				const vida1 = new Pocion(nivel = 1, imagen = "assets/items/pocion1.png", position = game.at(columna,fila))
-				game.addVisual(vida1)
-							
+				game.addVisual(vida1)			
 			}
 			if(numero == 5){
 				const vida2 = new Pocion(nivel = 2, imagen = "assets/items/pocion2.png", position = game.at(columna,fila))
@@ -151,13 +151,12 @@ object tablero {
 		game.addVisual(pared)
 		
 	}
-			
+// REVISAR	
 	method limpiarse() {
 			new Range(start = 2, end = game.width()+1).forEach{
 			fila => new Range(start = 0, end = game.height()).forEach{
 				columna => game.removeVisual(game.getObjectsIn((game.at(columna,fila))))
 			}}
-
 	}
 	
 
@@ -168,7 +167,7 @@ object tablero {
 	    game.addVisual(texto_ataque)
 	    game.addVisual(texto_defensa)
 	    game.addVisual(texto_puntuacion)
-	    //game.addVisual(dealer)
+	    game.addVisual(dealer)
 	    game.addVisual(portal)
 	    game.addVisual(ruben)
 	}
