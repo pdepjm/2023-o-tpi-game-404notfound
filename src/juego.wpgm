@@ -13,6 +13,7 @@ program juego {
 	game.height(11)
 	
     tablero.generarObjetosTablero()
+    tablero.generarParedes()
     tablero.cargarVisuales()
     
     var personaje = ruben
@@ -51,6 +52,7 @@ program juego {
     game.onCollideDo(personaje, { item_ => item_.esAgarrado(personaje) }  )
     //game.onCollideDo(personaje, { dealer_ => dealer_.mostrarOfertas(personaje) }  )
     game.onCollideDo(personaje, { portal_ => portal_.generarNivel() }) // pasar a siguiente nivel
+    game.onCollideDo(personaje, { pared_ => pared_.esChocado(personaje) })
 
 
     game.start()

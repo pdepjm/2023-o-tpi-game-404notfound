@@ -25,6 +25,24 @@ object portal {
 	method esAtacado(personaje){}
 	
 	method esAgarrado(personaje){}
+	
+	method esChocado(personaje){}
+}
+
+class Pared {
+	var property position
+	
+	method esChocado(personaje){
+		
+		personaje.volverAPosicion()
+	}
+	
+	method esAtacado(personaje){}
+	
+	method esAgarrado(personaje){} 
+	
+	method generarNivel(){}
+	
 }
 
 object tablero {
@@ -105,8 +123,34 @@ object tablero {
 			}
 			
 		}
-			
 }
+
+		
+	method generarParedes() {
+			
+		new Range(start = 0, end = game.width()).forEach{
+				columna => self.generarPared(columna,1)
+			}
+
+		new Range(start = 0, end = game.width()).forEach{
+				columna => self.generarPared(columna,11)
+			}
+			
+		new Range(start = 2, end = 10).forEach{
+				fila => self.generarPared(-1,fila)
+			}
+			
+		new Range(start = 2, end = 10).forEach{
+				fila => self.generarPared(9,fila)
+			}
+}
+
+	method generarPared(columna,fila){
+		
+		const pared = new Pared(position = game.at(columna, fila))
+		game.addVisual(pared)
+		
+	}
 			
 	method limpiarse() {
 			new Range(start = 2, end = game.width()+1).forEach{

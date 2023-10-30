@@ -19,6 +19,8 @@ class PjPrincipal{
     
     var image = "assets/rubens/ruben_abajo.png"
     
+    var positionAnterior = game.at(4,2)
+    
     method image() = image
 
     method ataque() = ataque.min(5)
@@ -47,21 +49,25 @@ class PjPrincipal{
 	}
 		
     method moverseHaciaArriba(){
+    	positionAnterior = position
         self.position(position.up(1))
         image = "assets/rubens/ruben_arriba.png"
     }
 
     method moverseHaciaAbajo(){
+    	positionAnterior = position
         self.position(position.down(1))
         image = "assets/rubens/ruben_abajo.png"
     }
 
     method moverseHaciaIzquierda(){
+    	positionAnterior = position
         self.position(position.left(1))
 		image = "assets/rubens/ruben_izquierda.png"
     }
 
     method moverseHaciaDerecha(){
+    	positionAnterior = position
         self.position(position.right(1))
         image = "assets/rubens/ruben_derecha.png"
     }
@@ -110,6 +116,12 @@ class PjPrincipal{
     	if(!self.tieneVida()){
     		self.morir()
     	}
+    }
+    
+    method volverAPosicion(){
+    	position = positionAnterior
+    	game.removeVisual(self)
+    	game.addVisual(self)
     }
 }
 const ruben = new PjPrincipal()
