@@ -14,7 +14,6 @@ object dealer {
 	var property position = game.at(4,5)
 	
 	method image() = imagen
-//	method powerUpDisponibles() = powerUps
 	method esEncontrado(personaje){
 		self.mostrarOfertas(personaje)
 	}
@@ -59,6 +58,12 @@ object dealer {
 		game.addVisual(self)
 		game.say(self, "Que desea comprar?")
 	}
+	
+	method realizarIntercambio(personaje,powerUp){
+		if(personaje.puedeComprar(powerUp)){		
+			personaje.comprar(powerUp)
+		}
+	}
 	method mostrarOfertas(personaje){
 		/*
 		 * 2. Mostrar todos los Power Ups con sus precios
@@ -77,6 +82,8 @@ object dealer {
 		self.mostrarPowerUps()
 		self.mostrarPowerUps()
 		self.actualizarDealer()
+		const powerUp = personaje.seleccionaPowerUp()
+		self.realizarIntercambio(personaje, powerUp)
 	}
 }
 

@@ -132,5 +132,16 @@ class PjPrincipal{
     	game.removeVisual(self)
     	game.addVisual(self)
     }
-}
+    
+    method seleccionarPowerUp(){
+    	if(!self.podesMoverte()){
+    		
+    	}
+    }
+    method puedeCompar(powerUp) = self.monedas() >= powerUp.precio()
+    method comprar(powerUp){
+    		monedas -= powerUp.precio()
+    		// Añadir powerUp al inventario
+    	}
+    }
 const ruben = new PjPrincipal()
