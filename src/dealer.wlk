@@ -9,21 +9,19 @@ object dealer {
 	var cantPP2 = 0
 	var cantPP3 = 0
 	var cantPP4 = 0
-	
+	const catalogo = []
 	const imagen = "assets/items/pelaAbajo.png" 
 	var property position = game.at(4,5)
 	
 	method image() = imagen
-	method esEncontrado(personaje){
-		self.mostrarOfertas(personaje)
-	}
 	
 	method mostrarPowerUps(){
 		const numero = (0.randomUpTo(4)).roundUp()
 		if(numero == 1 and cantPP1 == 0){
 			//Crear Power Up
 			const powerUp1 = new PowerUp1(imagen = "assets/items/powerUp1.png", precio = 10, position = game.at(3,5))
-			game.addVisual(powerUp1)	
+			game.addVisual(powerUp1)
+			catalogo.add(powerUp1)
 			cantPP1++	
 		}else if(numero == 1 and cantPP1 > 0){
 			// Volver a intentar generar un power up random
@@ -32,20 +30,23 @@ object dealer {
 		if(numero == 2 and cantPP2 == 0){
 			const powerUp2 = new PowerUp2(imagen = "assets/items/powerUp2.png", precio = 10, position = game.at(5,5))
 			game.addVisual(powerUp2)
+			catalogo.add(powerUp2)
 			cantPP2++		
 		}else if(numero == 2 and cantPP2 > 0){
 			self.mostrarPowerUps()
 		}
 		if(numero == 3 and cantPP3 == 0){
 			const powerUp3 = new PowerUp3(imagen = "assets/items/powerUp3.png", precio = 10, position = game.at(3,7))
-			game.addVisual(powerUp3)	
+			game.addVisual(powerUp3)
+			catalogo.add(powerUp3)	
 			cantPP3++		
 		}else if(numero == 3 and cantPP3 > 0){
 			self.mostrarPowerUps()
 		}
 		if(numero == 4 and cantPP4 == 0){
 			const powerUp4 = new PowerUp4(imagen = "assets/items/powerUp4.png", precio = 10, position = game.at(5,7))
-			game.addVisual(powerUp4)	
+			game.addVisual(powerUp4)
+			catalogo.add(powerUp4)	
 			cantPP4++		
 		}else if(numero == 4 and cantPP4 > 0){
 			self.mostrarPowerUps()
@@ -82,15 +83,29 @@ object dealer {
 		self.mostrarPowerUps()
 		self.mostrarPowerUps()
 		self.actualizarDealer()
+		keyboard.del().onPressDo({self.removerVisuales(personaje)})
+//		keyboard.del().onPressDo({self.removerVisuales()})
+//		keyboard.del().onPressDo({personaje.moverse(true)})
+//		keyboard.c().onPressDo({self.removerVisuales()}, {personaje.moverse(true)})
 		const powerUp = personaje.seleccionaPowerUp()
 		self.realizarIntercambio(personaje, powerUp)
 	}
+	
+	method removerVisual(powerUp){
+		game.removeVisual(powerUp)
+	}
+	method removerVisuales(personaje){
+		game.removeVisual(simulacroFondo)
+		game.removeVisual(self)
+		catalogo.forEach{powerUp_ => self.removerVisual(powerUp_)}
+		personaje.moverse(true)
+	}
+		
 }
 
 object simulacroFondo{
-	
 	const imagen = "assets/fondo/fondoCatalogo.png"
-	const position = game.at(0,2)
+	var property position = game.at(0,2)
 	
 	method image() = imagen
 	method ponerFondo(){
