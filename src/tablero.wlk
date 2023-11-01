@@ -138,8 +138,7 @@ object tablero {
 			
 		}
 }
-
-		
+	
 	method generarParedes() {
 			
 		new Range(start = 0, end = game.width()).forEach{
@@ -181,13 +180,13 @@ object tablero {
 			ruben.position(game.at(4,2))
 			portal.generarPosicion()
 			dealer.generarPosicion()
-			game.addVisual(dealer)		
+			if(dealer.desaparecer()){			
+				game.addVisual(dealer)
+				dealer.desaparecer(false)		
+			}
 			self.generarObjetosTablero()
 	}
-		
 					
-					
-
 	method cargarVisualesInicio(){
 	    game.boardGround("assets/fondo/fondo1.jpg") 
 	    game.addVisual(texto_monedas)
@@ -202,6 +201,5 @@ object tablero {
 	    game.addVisual(portal)
 	    game.addVisual(ruben)
 	}		
-		
 
 }

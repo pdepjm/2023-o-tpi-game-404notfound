@@ -16,7 +16,7 @@ class Monstruo {
     }
     method image() = imagen
     method boquear(){
-        game.say(self, "Ruben, hasta aca llegaste." /*+ PjNombre.nombre()*/)
+        game.say(self, "Ruben, hasta aca llegaste.")
     }
 
     method morir()

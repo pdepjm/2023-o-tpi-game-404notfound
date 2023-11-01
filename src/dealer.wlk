@@ -12,9 +12,10 @@ object dealer {
 	var cantPP4 = 0
 	var columna
 	var fila
+	var property position
+	var property desaparecer = false //Desaparece una vez que interactue con el pjPrincipal y aparece al generar nuevo lvl
 	const catalogo = []
 	const imagen = "assets/items/pelaAbajo.png" 
-	var property position
 	
 	method image() = imagen
 	
@@ -117,6 +118,7 @@ object dealer {
 		game.removeVisual(self)
 		catalogo.forEach{powerUp_ => tablero.removerVisual(powerUp_)}
 		personaje.moverse(true)
+		self.desaparecer(true)
 		self.reiniciarCatalogo()
 	}
 	method esChocado(personaje){
