@@ -24,7 +24,7 @@ object portal {
 	method generarNivel() {
 		
 		tablero.limpiarse()
-    	tablero.cargarVisualesInicio()
+    //	tablero.cargarVisualesInicio()
 	}
 
 	method esChocado(personaje){

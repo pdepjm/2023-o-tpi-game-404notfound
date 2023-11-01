@@ -71,17 +71,29 @@ class PowerUp {
 	
 	const imagen
 	const precio
-	const position
+	var property position
+	var nombre
 	
-	method position() = position
 	method image() = imagen
 	method precio() = precio
 	method esUsado(personaje)
+	method nombre()	= nombre
+	 
 	
 }
 // Aumentar en 1 cada Item que tenga menos las monedas
-class PowerUp1 inherits PowerUp{
+object powerUp1 {
+		
+	const imagen
+	const precio
+	var property position
+	var nombre
 	
+	method image() = imagen
+	method precio() = precio
+	method esUsado(personaje)
+	method nombre()	= nombre
+
 	override method esUsado(personaje)
 	{
 		if (personaje.tiene(self)){

@@ -133,17 +133,37 @@ class PjPrincipal{
     	game.removeVisual(self)
     	game.addVisual(self)
     }
-    
+
+/*
     method seleccionarPowerUp(){
     	if(!self.podesMoverte()){
-    		
-    	}
+		    keyboard.num1().onPressDo({
+	        return powerUp1
+	    })
+	
+	    keyboard.num2().onPressDo({
+	        )
+	    })
+	    
+	    keyboard.num3().onPressDo({
+	        
+	    })
+	    
+	    keyboard.num4().onPressDo({
+	        
+	    })
+	}
+}
+*/
+
+
+    
+    method puedeComprar(powerUp_) = self.monedas() >= powerUp_.precio()
+    method comprar(powerUp_){
+    		monedas -= powerUp_.precio()
+    		// Añadir powerUp al inventario
+    		powerUp_.position(game.at(4,2))
+    		}
     }
     
-    method puedeCompar(powerUp) = self.monedas() >= powerUp.precio()
-    method comprar(powerUp){
-    		monedas -= powerUp.precio()
-    		// Añadir powerUp al inventario
-    	}
-    }
 const ruben = new PjPrincipal()
