@@ -25,6 +25,9 @@ object dealer {
 	method generarPosicion() {
 		columna = (0.randomUpTo(8)).roundUp()
 		fila = (2.randomUpTo(10)).roundUp()
+		if (columna == portal.columna() and fila == 10) {
+			self.generarPosicion()
+		}
     	position = game.at(columna,fila)
 	}
 	
