@@ -1,6 +1,7 @@
 import wollok.game.*
 import pjPrincipal.*
 import items.*
+import tablero.*
 
 object dealer {
 	
@@ -9,11 +10,22 @@ object dealer {
 	var cantPP2 = 0
 	var cantPP3 = 0
 	var cantPP4 = 0
+	var columna
+	var fila
 	const catalogo = []
 	const imagen = "assets/items/pelaAbajo.png" 
-	var property position = game.at(4,5)
+	var property position
 	
 	method image() = imagen
+	
+	method columna() = columna
+	method fila() = fila
+	
+	method generarPosicion() {
+		columna = (0.randomUpTo(8)).roundUp()
+		fila = (2.randomUpTo(10)).roundUp()
+    	position = game.at(columna,fila)
+	}
 	
 	method mostrarPowerUps(){
 		const numero = (0.randomUpTo(4)).roundUp()
@@ -55,9 +67,9 @@ object dealer {
 	
 	method actualizarDealer(){
 		game.removeVisual(self)
-		self.position(game.at(1,6))
+		self.position(game.at(4,9))
 		game.addVisual(self)
-		game.say(self, "Que desea comprar?")
+		game.say(self, "Que desea \n comprar?")
 	}
 	
 	method realizarIntercambio(personaje,powerUp){
@@ -89,18 +101,25 @@ object dealer {
 //		keyboard.c().onPressDo({self.removerVisuales()}, {personaje.moverse(true)})
 		const powerUp = personaje.seleccionaPowerUp()
 		self.realizarIntercambio(personaje, powerUp)
+		
 	}
-	
-	method removerVisual(powerUp){
-		game.removeVisual(powerUp)
+
+	method reiniciarCatalogo() {
+		cantPP1 = 0
+		cantPP2 = 0
+		cantPP3 = 0
+		cantPP4 = 0
+		catalogo.clear()
 	}
+
 	method removerVisuales(personaje){
 		game.removeVisual(simulacroFondo)
 		game.removeVisual(self)
-		catalogo.forEach{powerUp_ => self.removerVisual(powerUp_)}
+		catalogo.forEach{powerUp_ => tablero.removerVisual(powerUp_)}
 		personaje.moverse(true)
+		self.reiniciarCatalogo()
 	}
-		
+	
 }
 
 object simulacroFondo{

@@ -23,6 +23,8 @@ class Items{
     method generarNivel() {}
     
     method esChocado(personaje){}
+    
+    method mostrarOfertas(personaje){}
 }
 class Daga inherits Items{
 

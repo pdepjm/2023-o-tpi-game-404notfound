@@ -3,6 +3,7 @@ import monstruos.*
 import items.*
 import inventario.*
 import dealer.*
+import tablero.*
 
 class PjPrincipal{
 
@@ -138,6 +139,7 @@ class PjPrincipal{
     		
     	}
     }
+    
     method puedeCompar(powerUp) = self.monedas() >= powerUp.precio()
     method comprar(powerUp){
     		monedas -= powerUp.precio()

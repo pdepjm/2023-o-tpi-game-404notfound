@@ -11,10 +11,11 @@ program juego {
     game.title("La aventura del Robot Ruben")
     game.width(9)
 	game.height(11)
-	
+
     tablero.generarObjetosTablero()
     tablero.generarParedes()
-    tablero.cargarVisuales()
+    tablero.cargarVisualesInicio()
+    tablero.cargarVisualesObjetosImportantes() 
     
     var personaje = ruben
 	

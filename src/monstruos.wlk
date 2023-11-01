@@ -55,4 +55,6 @@ class Monstruo {
     method generarNivel() {}
 	
 	method esChocado(personaje){}
+	
+	method mostrarOfertas(personaje){}
 }
