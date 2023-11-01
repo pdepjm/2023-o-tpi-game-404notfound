@@ -106,7 +106,7 @@ class PjPrincipal{
 
     method agarrar(item)
     {
-    	item.esAgarrado(self)
+    	item.esChocado(self)
     }
 
 

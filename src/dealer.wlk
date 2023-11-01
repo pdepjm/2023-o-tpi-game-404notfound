@@ -119,6 +119,9 @@ object dealer {
 		personaje.moverse(true)
 		self.reiniciarCatalogo()
 	}
+	method esChocado(personaje){
+		self.mostrarOfertas(personaje)
+	}
 	
 }
 

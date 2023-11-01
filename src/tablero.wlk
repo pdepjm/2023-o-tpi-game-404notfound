@@ -26,14 +26,10 @@ object portal {
 		tablero.limpiarse()
     	tablero.cargarVisualesInicio()
 	}
-	
-	method esAtacado(personaje){}
-	
-	method esAgarrado(personaje){}
-	
-	method esChocado(personaje){}
-	
-	method mostrarOfertas(personaje){}
+
+	method esChocado(personaje){
+		self.generarNivel()
+	}
 }
 
 class Pared {
@@ -43,14 +39,6 @@ class Pared {
 		
 		personaje.volverAPosicion()
 	}
-	
-	method esAtacado(personaje){}
-	
-	method esAgarrado(personaje){} 
-	
-	method generarNivel(){}
-	
-	method mostrarOfertas(personaje){}
 	
 }
 

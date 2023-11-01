@@ -14,21 +14,11 @@ class Items{
     method image() = imagen
     method nivel() = nivel
     
-    method esAgarrado(personaje)
-    
-    method esAtacado(personaje){
-    	// Se supone que este metodo no haga nada
-    }
-    
-    method generarNivel() {}
-    
-    method esChocado(personaje){}
-    
-    method mostrarOfertas(personaje){}
+    method esChocado(personaje)
 }
 class Daga inherits Items{
 
-    override method esAgarrado(personaje){
+    override method esChocado(personaje){
         personaje.ataque(personaje.ataque() + nivel)
         nivel = 0
         imagen = "assets/items/vacio.png" 
@@ -38,7 +28,7 @@ class Daga inherits Items{
 
 class Escudo inherits Items{
 
-    override method esAgarrado(personaje){
+    override method esChocado(personaje){
         personaje.defensa(personaje.defensa() + nivel)
         nivel = 0
         imagen = "assets/items/vacio.png" 
@@ -49,7 +39,7 @@ class Escudo inherits Items{
 class Moneda inherits Items{
 
 
-    override method esAgarrado(personaje){
+    override method esChocado(personaje){
         personaje.monedas(personaje.monedas() + nivel)
         nivel = 0
         imagen = "assets/items/vacio.png" 
@@ -59,7 +49,7 @@ class Moneda inherits Items{
 
 class Pocion inherits Items{
 
-    override method esAgarrado(personaje){
+    override method esChocado(personaje){
         personaje.vida(personaje.vida() + nivel)
         nivel = 0
         imagen = "assets/items/vacio.png" 
@@ -69,7 +59,7 @@ class Pocion inherits Items{
 
 class Pinches inherits Items{
 
-    override method esAgarrado(personaje){
+    override method esChocado(personaje){
         personaje.vida((personaje.vida() - nivel).max(0))
         imagen = "assets/items/pinchosSangre.png"
         personaje.estasVivo()

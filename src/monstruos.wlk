@@ -48,13 +48,9 @@ class Monstruo {
         	self.morir()
         }
     }
-    method esAgarrado(nada){
-    	// Se supone que este metodo no haga nada
-    }
-    
-    method generarNivel() {}
-	
-	method esChocado(personaje){}
-	
-	method mostrarOfertas(personaje){}
+
+	method esChocado(personaje){
+		self.esAtacado(personaje)
+	}
+
 }
