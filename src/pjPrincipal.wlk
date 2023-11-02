@@ -11,16 +11,18 @@ class PjPrincipal{
     var property defensa = 1
     var property vida = 1
 	var property vidaMax = 3
-    var property monedas = 0
+    var property monedas = 50
     var property puntuacion = 0
     
     var property dobleMovimiento_ = false
     var property moverse = true
     var property position = game.at(4,2)
     var property seleccionoPowerUp = false
+    var property tiene = false
     var image = "assets/rubens/ruben_abajo.png"
     
     var positionAnterior = position
+	
     
     method image() = image
 
@@ -29,7 +31,7 @@ class PjPrincipal{
     method vida() = vida.min(vidaMax)
     method monedas() = monedas
 	method poderTotal() = ataque + defensa + vida
-	method tiene(powerUp) = false
+	method tiene() = tiene
 	method podesMoverte() = moverse
 	
 	method dobleMovimiento(){
@@ -166,13 +168,15 @@ class PjPrincipal{
 	    })
 	}
 }
-
-
+	
+	
+	
     method puedeComprar(powerUp_) = self.monedas() >= powerUp_.precio()
-    method comprar(powerUp_){
+    method comprar(powerUp_) {
     		monedas -= powerUp_.precio()
     		// Añadir powerUp al inventario
     		powerUp_.position(game.at(8,0))
+    		self.tiene(powerUp_)
     		}
     }
     

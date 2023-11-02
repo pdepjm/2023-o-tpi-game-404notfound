@@ -31,6 +31,20 @@ program juego {
     keyboard.right().onPressDo({ 
         personaje.moverseHaciaDerecha()
     })
+    
+   
+    keyboard.q().onPressDo({
+			powerUp1.esUsado(ruben)
+		})
+	keyboard.w().onPressDo({
+			powerUp2.esUsado(ruben)
+		})
+	keyboard.e().onPressDo({
+			powerUp3.esUsado(ruben)
+		})
+	keyboard.r().onPressDo({
+			powerUp4.esUsado(ruben)
+		})
 /*    
     // POWER UPs
     keyboard.z().onPressDo({
@@ -38,7 +52,7 @@ program juego {
     })
 
     keyboard.x().onPressDo({
-        powerUp2.esUsado(ruben)
+        powerUp2.esUsado(ruben) 
     })
     
     keyboard.c().onPressDo({

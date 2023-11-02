@@ -15,6 +15,7 @@ object dealer {
 	var property powerUpSeleccionado
 	var property position
 	var property desaparecer = false //Desaparece una vez que interactue con el pjPrincipal y aparece al generar nuevo lvl
+	var property powerUpComprado 
 	const catalogo = []
 	const imagen = "assets/items/pelaAbajo.png" 
 	
@@ -34,6 +35,60 @@ object dealer {
 		}
     	position = game.at(columna,fila)
 	}
+	
+
+/*
+	method actualizarPosicionesPowerUps() {
+		new Range(start = 1, end = 3).forEach{
+		catalogo.first().position(game.at(1,6))
+		game.addVisual(catalogo.first())
+		catalogo.drop(1).first().position(game.at(3,6))
+		game.addVisual(catalogo.drop(1).first())
+		catalogo.drop(2).first().position(game.at(5,6))
+		game.addVisual(catalogo.drop(2).first())
+	}
+}
+*/
+
+	method esChocado(personaje){
+		if(!ruben.tiene()){
+		  self.mostrarOfertas(personaje)
+		}
+		else game.say(self, "Ya tenes \n un Power Up")
+	}
+	
+	
+	
+	method mostrarOfertas(personaje){
+		/*
+		 * 2. Mostrar todos los Power Ups con sus precios
+		 * 2.2 Mostrar Precios + ¿Descripcion?
+		 * 3. Realizar Intercambio ()
+		 * 3.1 Tocar Tecla para elegir que power Up queremos
+		 * 3.2 Restarnos la cantidad de plata que sale el powerUp
+		 * 3.3 Añadir powerUp al inventario
+		 * 4. Sacar fondoCatalogo
+		 * 5. ¿Sacar al dealer?
+		 * 6. Hacer que ruben se vuelva a mover 
+		 */
+		simulacroFondo.ponerFondo()
+		personaje.moverse(false)
+		self.mostrarPowerUps()
+		self.mostrarPowerUps()
+		self.mostrarPowerUps()
+		self.actualizarDealer()
+		//self.buscarPowerUps()
+		ruben.seleccionarPowerUp()
+		//jugador elige el power powerUp
+		
+
+			
+		keyboard.a().onPressDo({self.removerVisuales(personaje)})
+//		keyboard.del().onPressDo({self.removerVisuales()})
+//		keyboard.del().onPressDo({personaje.moverse(true)})
+//		keyboard.c().onPressDo({self.removerVisuales()}, {personaje.moverse(true)})
+}
+	
 	
 	method mostrarPowerUps(){
 		const numero = (0.randomUpTo(4)).roundUp()
@@ -67,68 +122,27 @@ object dealer {
 		}else if(numero == 4 and cantPP4 > 0){
 			self.mostrarPowerUps()
 		}
-		
-//		self.actualizarPosicionesPowerUps()
-	}
 
-/*
-	method actualizarPosicionesPowerUps() {
-		new Range(start = 1, end = 3).forEach{
-		catalogo.first().position(game.at(1,6))
-		game.addVisual(catalogo.first())
-		catalogo.drop(1).first().position(game.at(3,6))
-		game.addVisual(catalogo.drop(1).first())
-		catalogo.drop(2).first().position(game.at(5,6))
-		game.addVisual(catalogo.drop(2).first())
 	}
-}
-*/
-	method actualizarDealer(){
+	
+	
+		method actualizarDealer(){
 		game.removeVisual(self)
 		self.position(game.at(4,9))
 		game.addVisual(self)
 		game.say(self, "Que desea \n comprar?")
 	}
 	
-	method realizarIntercambio(personaje){
+	
+		method realizarIntercambio(personaje){
 		if(personaje.puedeComprar(self.powerUpSeleccionado())){		
 			personaje.comprar(self.powerUpSeleccionado())
+			self.powerUpComprado(self.powerUpSeleccionado())
+			self.removerVisuales(personaje)
 		}
 		else game.say(self, "No te alcanza pa")
 	}
-
 	
-	method mostrarOfertas(personaje){
-		/*
-		 * 2. Mostrar todos los Power Ups con sus precios
-		 * 2.2 Mostrar Precios + ¿Descripcion?
-		 * 3. Realizar Intercambio ()
-		 * 3.1 Tocar Tecla para elegir que power Up queremos
-		 * 3.2 Restarnos la cantidad de plata que sale el powerUp
-		 * 3.3 Añadir powerUp al inventario
-		 * 4. Sacar fondoCatalogo
-		 * 5. ¿Sacar al dealer?
-		 * 6. Hacer que ruben se vuelva a mover 
-		 */
-		simulacroFondo.ponerFondo()
-		personaje.moverse(false)
-		self.mostrarPowerUps()
-		self.mostrarPowerUps()
-		self.mostrarPowerUps()
-		self.actualizarDealer()
-		//self.buscarPowerUps()
-		ruben.seleccionarPowerUp()
-		//jugador elige el power powerUp
-		
-			
-		keyboard.a().onPressDo({self.removerVisuales(personaje)})
-//		keyboard.del().onPressDo({self.removerVisuales()})
-//		keyboard.del().onPressDo({personaje.moverse(true)})
-//		keyboard.c().onPressDo({self.removerVisuales()}, {personaje.moverse(true)})
-	
-	}
-	
-
 	/*method buscarPowerUps(){
 		
 		keyboard.z().onPressDo({
@@ -165,16 +179,17 @@ object dealer {
 		game.removeVisual(simulacroFondo)
 		game.removeVisual(self)
 		catalogo.forEach{powerUp_ => tablero.removerVisual(powerUp_)}
-		game.addVisual(self.powerUpSeleccionado())
 		personaje.moverse(true)
 		self.desaparecer(true)
 		self.reiniciarCatalogo()
-	}
-	method esChocado(personaje){
-		self.mostrarOfertas(personaje)
-	}
+		if (ruben.tiene() == powerUpComprado){
+			game.addVisual(self.powerUpComprado())
+		} 
 	
-	method obtenerObjeto() = catalogo.find{powerUp_ => powerUp_.nombre() == "powerUp1"}
+	}
+
+	
+	//method obtenerObjeto() = catalogo.find{powerUp_ => powerUp_.nombre() == "powerUp1"}
 	
 }
 
