@@ -118,11 +118,9 @@ object dealer {
 		self.actualizarDealer()
 		//self.buscarPowerUps()
 		ruben.seleccionarPowerUp()
-		if(ruben.seleccionoPowerUp()){
-			self.realizarIntercambio(personaje)
-			ruben.seleccionoPowerUp(false)
-		}
+		//jugador elige el power powerUp
 		
+			
 		keyboard.a().onPressDo({self.removerVisuales(personaje)})
 //		keyboard.del().onPressDo({self.removerVisuales()})
 //		keyboard.del().onPressDo({personaje.moverse(true)})
@@ -130,6 +128,7 @@ object dealer {
 	
 	}
 	
+
 	/*method buscarPowerUps(){
 		
 		keyboard.z().onPressDo({
@@ -166,6 +165,7 @@ object dealer {
 		game.removeVisual(simulacroFondo)
 		game.removeVisual(self)
 		catalogo.forEach{powerUp_ => tablero.removerVisual(powerUp_)}
+		game.addVisual(self.powerUpSeleccionado())
 		personaje.moverse(true)
 		self.desaparecer(true)
 		self.reiniciarCatalogo()

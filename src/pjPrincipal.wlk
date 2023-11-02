@@ -139,22 +139,30 @@ class PjPrincipal{
     	if(!self.podesMoverte()){
 		    keyboard.num1().onPressDo({
 	        dealer.powerUpSeleccionado(powerUp1)
-	        seleccionoPowerUp = true
+	        dealer.realizarIntercambio(self)
+			self.seleccionoPowerUp(false)
+			//seleccionoPowerUp = true
 	    })
 	
 	    keyboard.num2().onPressDo({
 	        dealer.powerUpSeleccionado(powerUp2)
-	        seleccionoPowerUp = true
+	        dealer.realizarIntercambio(self)
+			self.seleccionoPowerUp(false)
+			//seleccionoPowerUp = true
 	    })
 	    
 	    keyboard.num3().onPressDo({
 	        dealer.powerUpSeleccionado(powerUp3)
-	        seleccionoPowerUp = true
+	        dealer.realizarIntercambio(self)
+			self.seleccionoPowerUp(false)
+//	        seleccionoPowerUp = true
 	    })
 	    
 	    keyboard.num4().onPressDo({
 	        dealer.powerUpSeleccionado(powerUp4)
-	        seleccionoPowerUp = true
+	        dealer.realizarIntercambio(self)
+			self.seleccionoPowerUp(false)
+//	        seleccionoPowerUp = true
 	    })
 	}
 }
@@ -164,7 +172,7 @@ class PjPrincipal{
     method comprar(powerUp_){
     		monedas -= powerUp_.precio()
     		// Añadir powerUp al inventario
-    		powerUp_.position(game.at(4,2))
+    		powerUp_.position(game.at(8,0))
     		}
     }
     
