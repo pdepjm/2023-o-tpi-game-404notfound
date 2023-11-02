@@ -17,7 +17,7 @@ class PjPrincipal{
     var property dobleMovimiento_ = false
     var property moverse = true
     var property position = game.at(4,2)
-    
+    var property seleccionoPowerUp = false
     var image = "assets/rubens/ruben_abajo.png"
     
     var positionAnterior = position
@@ -134,30 +134,32 @@ class PjPrincipal{
     	game.addVisual(self)
     }
 
-/*
+
     method seleccionarPowerUp(){
     	if(!self.podesMoverte()){
 		    keyboard.num1().onPressDo({
-	        return powerUp1
+	        dealer.powerUpSeleccionado(powerUp1)
+	        seleccionoPowerUp = true
 	    })
 	
 	    keyboard.num2().onPressDo({
-	        )
+	        dealer.powerUpSeleccionado(powerUp2)
+	        seleccionoPowerUp = true
 	    })
 	    
 	    keyboard.num3().onPressDo({
-	        
+	        dealer.powerUpSeleccionado(powerUp3)
+	        seleccionoPowerUp = true
 	    })
 	    
 	    keyboard.num4().onPressDo({
-	        
+	        dealer.powerUpSeleccionado(powerUp4)
+	        seleccionoPowerUp = true
 	    })
 	}
 }
-*/
 
 
-    
     method puedeComprar(powerUp_) = self.monedas() >= powerUp_.precio()
     method comprar(powerUp_){
     		monedas -= powerUp_.precio()

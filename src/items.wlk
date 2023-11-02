@@ -67,34 +67,20 @@ class Pinches inherits Items{
 
 }
 
-class PowerUp {
-	
-	const imagen
-	const precio
-	var property position
-	var nombre
-	
-	method image() = imagen
-	method precio() = precio
-	method esUsado(personaje)
-	method nombre()	= nombre
-	 
-	
-}
+
 // Aumentar en 1 cada Item que tenga menos las monedas
 object powerUp1 {
 		
-	const imagen
-	const precio
-	var property position
-	var nombre
+	const imagen = "assets/items/powerUp1.png" 
+	const precio = 10
+	var property position = game.at(6,5)
+	const  nombre = "powerUp1"
 	
 	method image() = imagen
 	method precio() = precio
-	method esUsado(personaje)
 	method nombre()	= nombre
 
-	override method esUsado(personaje)
+	method esUsado(personaje)
 	{
 		if (personaje.tiene(self)){
 			personaje.vida(personaje.vida() + 1)
@@ -106,37 +92,71 @@ object powerUp1 {
 }
 
 // Aumenta la vida maxima. Caso Base de 3 a 4 corazones
-class PowerUp2 inherits PowerUp{
-	
-	override method esUsado(personaje)
+object powerUp2 {
+		
+	const imagen = "assets/items/powerUp2.png" 
+	const precio = 10
+	var property position = game.at(6,7)
+	const nombre = "powerUp2"
+
+	method image() = imagen
+	method precio() = precio
+
+	method nombre()	= nombre
+
+	method esUsado(personaje)
 	{
 		if (personaje.tiene(self)){
-		personaje.vidaMax(personaje.vidaMax() + 1)
+			personaje.vida(personaje.vida() + 1)
+			personaje.defensa(personaje.defensa() + 1)
+			personaje.ataque(personaje.ataque() + 1)
 		}
 	}	
 	
 }
 
 // Todos los monstruos pasan a ser de nivel 1
-class PowerUp3 inherits PowerUp{
+object powerUp3 {
+		
+	const imagen = "assets/items/powerUp3.png" 
+	const precio = 10
+	var property position = game.at(4,5)
+	const nombre = "powerUp3"
 	
-	override method esUsado(personaje)
+	method image() = imagen
+	method precio() = precio
+	method nombre()	= nombre
+
+	method esUsado(personaje)
 	{
 		if (personaje.tiene(self)){
-			tablero.nivelMonstruo(1)
+			personaje.vida(personaje.vida() + 1)
+			personaje.defensa(personaje.defensa() + 1)
+			personaje.ataque(personaje.ataque() + 1)
 		}
 	}	
+	
 }
 //Moverse 2 casillas
-class PowerUp4 inherits PowerUp{
+object powerUp4 {
+		
+	const  imagen = "assets/items/powerUp4.png"
+	const precio = 10 
+	var property position = game.at(4,7)
+	const nombre = "powerUp4"
 	
-	override method esUsado(personaje)
+	method image() = imagen
+	method precio() = precio
+	method nombre()	= nombre
+
+	method esUsado(personaje)
 	{
 		if (personaje.tiene(self)){
-			personaje.dobleMovimiento_(true)
-			personaje.dobleMovimiento()
-		}
-	}	
-}
+			personaje.vida(personaje.vida() + 1)
+			personaje.defensa(personaje.defensa() + 1)
+			personaje.ataque(personaje.ataque() + 1)
+			}
+		}	
 	
+	}
 

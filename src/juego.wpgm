@@ -50,6 +50,27 @@ program juego {
     })
 */
 
+		/*keyboard.z().onPressDo({
+			dealer.powerUpSeleccionado(powerUp1) 
+		//powerUpSeleccionado = catalogo.find{powerUp_ => powerUp_.nombre() == "powerUp1"}
+	    })
+		
+	    keyboard.x().onPressDo({
+	    	dealer.powerUpSeleccionado(powerUp2)
+	    //powerUpSeleccionado = catalogo.find{powerUp_ => powerUp_.nombre() == "powerUp2"}
+	    })
+	    
+	    keyboard.c().onPressDo({
+			dealer.powerUpSeleccionado(powerUp3)
+		//powerUpSeleccionado = catalogo.find{powerUp_ => powerUp_.nombre() == "powerUp3"}
+	    })
+	    
+	    keyboard.v().onPressDo({
+			dealer.powerUpSeleccionado(powerUp4)
+		//powerUpSeleccionado = catalogo.find{powerUp_ => powerUp_.nombre() == "powerUp4"}  	
+	    
+					})*/
+	
  	game.onCollideDo(personaje, { objeto_ => objeto_.esChocado(personaje) }  )
 
 

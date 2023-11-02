@@ -24,6 +24,7 @@ object portal {
 	method generarNivel() {
 		
 		tablero.limpiarse()
+		    
     //	tablero.cargarVisualesInicio()
 	}
 
