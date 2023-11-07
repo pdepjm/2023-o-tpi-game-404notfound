@@ -59,28 +59,27 @@ method moverseHaciaDerecha(){
     	self.moverseHacia(derecha)
 }
 
-	
-method defendete(enemigo_){ // estamos repitiendo lógica 😠
-
-        var aux
-
-        aux = defensa
-        defensa = (self.defensa() - enemigo_.nivel()).max(0)
-        self.puntuacion(puntuacion + enemigo_.nivel() * 10)    
-		enemigo_.nuevoNivel((enemigo_.nivel() - aux).max(0))     
+method defendete(enemigo){
+		var aux = defensa
+        defensa = self.reduccionAlDefenderse(enemigo, self.defensa())
+        self.puntuarPorDefensa(enemigo, aux)
         
-        aux = ataque
-        ataque = (self.ataque() - enemigo_.nivel()).max(0)
-        self.puntuacion(puntuacion + enemigo_.nivel() * 10)    
-		enemigo_.nuevoNivel((enemigo_.nivel() - aux).max(0))    
+        aux= ataque
+        ataque = self.reduccionAlDefenderse(enemigo, self.ataque())     
+        self.puntuarPorDefensa(enemigo, aux)
         
         aux = vida
-        vida = (self.vida() - enemigo_.nivel()).max(0)
-        self.puntuacion(puntuacion + enemigo_.nivel() * 10)    
-		enemigo_.nuevoNivel((enemigo_.nivel() - aux).max(0))
-		
-	}	
-	
+        vida = self.reduccionAlDefenderse(enemigo, self.vida()) 
+        self.puntuarPorDefensa(enemigo, aux)
+}
+
+method reduccionAlDefenderse(enemigo, valor) = (valor - enemigo.nivel()).max(0)
+
+method puntuarPorDefensa(enemigo, valor) { // el método puntuación es el que actualiza el nivel del enemigo
+        self.puntuacion(puntuacion + enemigo.nivel() * 10)    
+		enemigo.nuevoNivel((enemigo.nivel() - valor).max(0))   
+}
+
 
     method agarrar(item)
     {
