@@ -52,39 +52,32 @@ class PjPrincipal{
 	    }
 	}
 		
-    method moverseHaciaArriba(){
+method moverseHacia(direccion){
     	if(self.podesMoverte()){
 	    	positionAnterior = position
-	        self.position(position.up(1))
-	        image = "assets/rubens/ruben_arriba.png"    		
-    	}
-    }
+	        self.position(direccion.proximaPosicion(position))
+	        image = "assets/rubens/ruben_" + direccion.nombre() + ".png"    		
+    	}  
+}
 
-    method moverseHaciaAbajo(){
-    	if(self.podesMoverte()){
-	    	positionAnterior = position
-	        self.position(position.down(1))
-	        image = "assets/rubens/ruben_abajo.png"
-    	}
-    }
+method moverseHaciaArriba(){
+    	self.moverseHacia(arriba)
+}
 
-    method moverseHaciaIzquierda(){
-    	if(self.podesMoverte()){
-	    	positionAnterior = position
-	        self.position(position.left(1))
-			image = "assets/rubens/ruben_izquierda.png"    		
-    	}
-    }
+method moverseHaciaAbajo(){
+    	self.moverseHacia(abajo)
+}
 
-    method moverseHaciaDerecha(){
-    	if(self.podesMoverte()){
-	    	positionAnterior = position
-	        self.position(position.right(1))
-	        image = "assets/rubens/ruben_derecha.png"    		
-    	}    	
-    }
+method moverseHaciaIzquierda(){
+    	self.moverseHacia(izquierda)
+}
+
+method moverseHaciaDerecha(){
+    	self.moverseHacia(derecha)
+}
+
 	
-    method defendete(enemigo_){ // estamos repitiendo lógica 😠
+method defendete(enemigo_){ // estamos repitiendo lógica 😠
 
         var aux
 
@@ -180,4 +173,35 @@ class PjPrincipal{
     		}
     }
     
+object arriba{
+	
+	method nombre() = "arriba"
+	method proximaPosicion(position) {
+		return position.up(1)
+	}
+}
+
+object abajo{
+	
+	method nombre() = "abajo"
+	method proximaPosicion(position) {
+		return position.down(1)
+	}
+}
+
+object derecha{
+	
+	method nombre() = "derecha"
+	method proximaPosicion(position) {
+		return position.right(1)
+	}
+}
+
+object izquierda{
+	
+	method nombre() = "izquierda"
+	method proximaPosicion(position) {
+		return position.left(1)
+	}
+}
 const ruben = new PjPrincipal()
