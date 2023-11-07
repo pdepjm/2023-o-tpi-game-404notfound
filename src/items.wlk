@@ -153,9 +153,7 @@ object powerUp4 {
 	method esUsado(personaje)
 	{
 		if (personaje.tiene() == dealer.powerUpComprado()){
-			personaje.vida(personaje.vida() + 1)
-			personaje.defensa(personaje.defensa() + 1)
-			personaje.ataque(personaje.ataque() + 1)
+			personaje.cantidadDeMovimiento(2)
 			game.removeVisual(self)
 			ruben.tiene(false)
 			}

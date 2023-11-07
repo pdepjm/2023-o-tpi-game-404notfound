@@ -14,7 +14,7 @@ class PjPrincipal{
     var property monedas = 50
     var property puntuacion = 0
     
-    var property dobleMovimiento_ = false
+    var property cantidadDeMovimiento = 1
     var property moverse = true
     var property position = game.at(4,2)
     var property seleccionoPowerUp = false
@@ -34,29 +34,12 @@ class PjPrincipal{
 	method tiene() = tiene
 	method podesMoverte() = moverse
 	
-	method dobleMovimiento(){
-		if (dobleMovimiento_) {
-	 	keyboard.up().onPressDo({ 
-        	self.position(position.up(1))
-	    })
-	    keyboard.down().onPressDo({ 
-        	self.position(position.down(1))
-	    })
-	    keyboard.left().onPressDo({ 
-        self.position(position.left(1))
-	    })
-	    keyboard.right().onPressDo({ 
-        self.position(position.right(1))
-	    })
-	    self.dobleMovimiento_(false)
-	    }
-	}
-		
 method moverseHacia(direccion){
     	if(self.podesMoverte()){
 	    	positionAnterior = position
 	        self.position(direccion.proximaPosicion(position))
-	        image = "assets/rubens/ruben_" + direccion.nombre() + ".png"    		
+	        image = "assets/rubens/ruben_" + direccion.nombre() + ".png"
+	        self.cantidadDeMovimiento(1)		
     	}  
 }
 
@@ -177,7 +160,7 @@ object arriba{
 	
 	method nombre() = "arriba"
 	method proximaPosicion(position) {
-		return position.up(1)
+		return position.up(ruben.cantidadDeMovimiento())
 	}
 }
 
@@ -185,7 +168,7 @@ object abajo{
 	
 	method nombre() = "abajo"
 	method proximaPosicion(position) {
-		return position.down(1)
+		return position.down(ruben.cantidadDeMovimiento())
 	}
 }
 
@@ -193,7 +176,7 @@ object derecha{
 	
 	method nombre() = "derecha"
 	method proximaPosicion(position) {
-		return position.right(1)
+		return position.right(ruben.cantidadDeMovimiento())
 	}
 }
 
@@ -201,7 +184,7 @@ object izquierda{
 	
 	method nombre() = "izquierda"
 	method proximaPosicion(position) {
-		return position.left(1)
+		return position.left(ruben.cantidadDeMovimiento())
 	}
 }
 const ruben = new PjPrincipal()
