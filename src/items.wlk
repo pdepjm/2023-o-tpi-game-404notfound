@@ -14,14 +14,17 @@ class Items{
     method image() = imagen
     method nivel() = nivel
     
-    method esChocado(personaje)
+    method esChocado(personaje) {
+    	nivel = 0
+        imagen = "assets/items/vacio.png" 
+    }
 }
 class Daga inherits Items{
 
     override method esChocado(personaje){
-        personaje.ataque(personaje.ataque() + nivel)
-        nivel = 0
-        imagen = "assets/items/vacio.png" 
+    	personaje.ataque(personaje.ataque() + nivel)
+		super(personaje)
+
     }
     
 }
@@ -29,9 +32,9 @@ class Daga inherits Items{
 class Escudo inherits Items{
 
     override method esChocado(personaje){
-        personaje.defensa(personaje.defensa() + nivel)
-        nivel = 0
-        imagen = "assets/items/vacio.png" 
+    	personaje.defensa(personaje.defensa() + nivel)
+		super(personaje)
+
     }
 }
 
@@ -41,8 +44,7 @@ class Moneda inherits Items{
 
     override method esChocado(personaje){
         personaje.monedas(personaje.monedas() + nivel)
-        nivel = 0
-        imagen = "assets/items/vacio.png" 
+    	super(personaje)
     }
     
 }
@@ -50,9 +52,10 @@ class Moneda inherits Items{
 class Pocion inherits Items{
 
     override method esChocado(personaje){
-        personaje.vida(personaje.vida() + nivel)
-        nivel = 0
-        imagen = "assets/items/vacio.png" 
+    	personaje.vida(personaje.vida() + nivel)
+    	super(personaje)
+
+
     }
 
 }
