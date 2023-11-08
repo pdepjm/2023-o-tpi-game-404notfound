@@ -18,20 +18,20 @@ class PjPrincipal{
     var property moverse = true
     var property position = game.at(4,2)
     var property seleccionoPowerUp = false
-    var property tiene = false
+    var property powerUpSeleccionado = powerUpNulo
+    var property tienePowerUp = false
+    var property powerUpQueTiene = powerUpNulo
     var image = "assets/rubens/ruben_abajo.png"
     
     var positionAnterior = position
 	
     
     method image() = image
-
     method ataque() = ataque.min(5)
     method defensa() = defensa.min(5)
     method vida() = vida.min(vidaMax)
     method monedas() = monedas
 	method poderTotal() = ataque + defensa + vida
-	method tiene() = tiene
 	method podesMoverte() = moverse
 	
 method moverseHacia(direccion){
@@ -75,7 +75,7 @@ method defendete(enemigo){
 
 method reduccionAlDefenderse(enemigo, valor) = (valor - enemigo.nivel()).max(0)
 
-method puntuarPorDefensa(enemigo, valor) { // el método puntuación es el que actualiza el nivel del enemigo
+method puntuarPorDefensa(enemigo, valor) { // el método puntuación también actualiza el nivel del enemigo
         self.puntuacion(puntuacion + enemigo.nivel() * 10)    
 		enemigo.nuevoNivel((enemigo.nivel() - valor).max(0))   
 }
@@ -88,15 +88,17 @@ method puntuarPorDefensa(enemigo, valor) { // el método puntuación es el que a
 
 
     method boquear(){
-	        game.say(self, "A casa bicho raro" /*+ PjNombre.nombre()*/)		
+	        game.say(self, "A casa bicho raro")		
     }
     
     method tieneVida() = self.vida() > 0 
     
     method morir(){
     	image = "assets/monstruos/cenizas.png"
-    	game.stop()
-    	//GAME OVER
+    	self.moverse(false)
+    	//pasar a pantalla de GAME OVER
+    	game.schedule(5000, {=>game.stop()})
+
     }
     
     method estasVivo(){
@@ -114,44 +116,38 @@ method puntuarPorDefensa(enemigo, valor) { // el método puntuación es el que a
 
     method seleccionarPowerUp(){
     	if(!self.podesMoverte()){
-		    keyboard.num1().onPressDo({
-	        dealer.powerUpSeleccionado(powerUp1)
-	        dealer.realizarIntercambio(self)
-			self.seleccionoPowerUp(false)
-			//seleccionoPowerUp = true
-	    })
-	
-	    keyboard.num2().onPressDo({
-	        dealer.powerUpSeleccionado(powerUp2)
-	        dealer.realizarIntercambio(self)
-			self.seleccionoPowerUp(false)
-			//seleccionoPowerUp = true
-	    })
-	    
-	    keyboard.num3().onPressDo({
-	        dealer.powerUpSeleccionado(powerUp3)
-	        dealer.realizarIntercambio(self)
-			self.seleccionoPowerUp(false)
-//	        seleccionoPowerUp = true
-	    })
-	    
-	    keyboard.num4().onPressDo({
-	        dealer.powerUpSeleccionado(powerUp4)
-	        dealer.realizarIntercambio(self)
-			self.seleccionoPowerUp(false)
-//	        seleccionoPowerUp = true
-	    })
+		self.auxiliar()
+		self.intentarComprar(powerUpSeleccionado)
 	}
 }
 	
+	method auxiliar(){
+	    keyboard.num1().onPressDo({
+		powerUpSeleccionado = powerUp1
+	    })
+	    keyboard.num2().onPressDo({
+		powerUpSeleccionado = powerUp2
+	    })
+	    keyboard.num3().onPressDo({
+		powerUpSeleccionado = powerUp3
+	    })
+	    keyboard.num4().onPressDo({
+		powerUpSeleccionado = powerUp4	
+		})
+	}
 	
+	method intentarComprar(powerUp) {
+		if (self.puedeComprar(powerUp)) {
+			self.comprar(powerUp)
+		}
+	}
 	
     method puedeComprar(powerUp_) = self.monedas() >= powerUp_.precio()
     method comprar(powerUp_) {
     		monedas -= powerUp_.precio()
-    		// Añadir powerUp al inventario
     		powerUp_.position(game.at(8,0))
-    		self.tiene(powerUp_)
+    		self.tienePowerUp(true)
+    		self.powerUpQueTiene(powerUp_)	
     		}
     }
     

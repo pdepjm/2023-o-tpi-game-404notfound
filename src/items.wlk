@@ -85,15 +85,15 @@ object powerUp1 {
 
 	method esUsado(personaje)
 	{
-		if (personaje.tiene() == dealer.powerUpComprado()){
-			personaje.vida(personaje.vida() + 1)
-			personaje.defensa(personaje.defensa() + 1)
-			personaje.ataque(personaje.ataque() + 1)
-			game.removeVisual(self)
-			ruben.tiene(false)
+		personaje.vida(personaje.vida() + 1)
+		personaje.defensa(personaje.defensa() + 1)
+		personaje.ataque(personaje.ataque() + 1)
+		game.removeVisual(self)
+		ruben.tienePowerUp(false)
+		ruben.powerUpQueTiene(powerUpNulo)
 		}
 	}	
-}
+
 
 // Aumenta la vida maxima. Caso Base de 3 a 4 corazones
 object powerUp2 {
@@ -110,14 +110,13 @@ object powerUp2 {
 
 	method esUsado(personaje)
 	{
-		if (personaje.tiene() == dealer.powerUpComprado()){
-			personaje.vidaMax(personaje.vidaMax() + 1)
-			game.removeVisual(self)
-			ruben.tiene(false)
+		personaje.vidaMax(personaje.vidaMax() + 1)
+		game.removeVisual(self)
+		ruben.tienePowerUp(false)
+		ruben.powerUpQueTiene(powerUpNulo)
 		}
 	}	
 	
-}
 
 // Todos los monstruos de nivel 2 pasan a ser de nivel 1, a partir del siguiente nivel
 object powerUp3 {
@@ -133,13 +132,14 @@ object powerUp3 {
 
 	method esUsado(personaje)
 	{
-		if (personaje.tiene() == dealer.powerUpComprado()){
-			 tablero.nivelMonstruo(1) 
-			 game.removeVisual(self)
-			 ruben.tiene(false)
-		}
-	}	
-}
+
+		 tablero.nivelMonstruo(1) 
+		 game.removeVisual(self)
+		 ruben.tienePowerUp(false)
+		 ruben.powerUpQueTiene(powerUpNulo)
+	}
+}	
+
 
 //Moverse 2 casillas
 object powerUp4 {
@@ -155,12 +155,20 @@ object powerUp4 {
 
 	method esUsado(personaje)
 	{
-		if (personaje.tiene() == dealer.powerUpComprado()){
-			personaje.cantidadDeMovimiento(2)
-			game.removeVisual(self)
-			ruben.tiene(false)
-			}
-		}	
-	
-	}
+		personaje.cantidadDeMovimiento(2)
+		game.removeVisual(self)
+		ruben.tienePowerUp(false)
+		ruben.powerUpQueTiene(powerUpNulo)
+		}
+	}	
 
+
+object powerUpNulo {
+		const precio = 0
+		var property position
+		method esUsado(personaje) {
+			ruben.tienePowerUp(false)
+			ruben.powerUpQueTiene(self)
+		}
+		method precio() = precio
+	}

@@ -21,7 +21,6 @@ class Monstruo {
 
     method morir()
     {
-        // Tratar de Eliminar el Objeto Monstruo usando removeVisual()
         imagen = "assets/monstruos/cenizas.png"
     }
 

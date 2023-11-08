@@ -30,60 +30,12 @@ program juego {
     })
     keyboard.right().onPressDo({ 
         personaje.moverseHaciaDerecha()
-    })
-    
+    })    
    
-    keyboard.q().onPressDo({
-			powerUp1.esUsado(ruben)
+    keyboard.space().onPressDo({
+			ruben.powerUpQueTiene().esUsado(ruben)
 		})
-	keyboard.w().onPressDo({
-			powerUp2.esUsado(ruben)
-		})
-	keyboard.e().onPressDo({
-			powerUp3.esUsado(ruben)
-		})
-	keyboard.r().onPressDo({
-			powerUp4.esUsado(ruben)
-		})
-/*    
-    // POWER UPs
-    keyboard.z().onPressDo({
-        powerUp1.esUsado(ruben)
-    })
 
-    keyboard.x().onPressDo({
-        powerUp2.esUsado(ruben) 
-    })
-    
-    keyboard.c().onPressDo({
-        powerUp3.esUsado(ruben)
-    })
-    
-    keyboard.v().onPressDo({
-        powerUp4.esUsado(ruben)
-    })
-*/
-
-		/*keyboard.z().onPressDo({
-			dealer.powerUpSeleccionado(powerUp1) 
-		//powerUpSeleccionado = catalogo.find{powerUp_ => powerUp_.nombre() == "powerUp1"}
-	    })
-		
-	    keyboard.x().onPressDo({
-	    	dealer.powerUpSeleccionado(powerUp2)
-	    //powerUpSeleccionado = catalogo.find{powerUp_ => powerUp_.nombre() == "powerUp2"}
-	    })
-	    
-	    keyboard.c().onPressDo({
-			dealer.powerUpSeleccionado(powerUp3)
-		//powerUpSeleccionado = catalogo.find{powerUp_ => powerUp_.nombre() == "powerUp3"}
-	    })
-	    
-	    keyboard.v().onPressDo({
-			dealer.powerUpSeleccionado(powerUp4)
-		//powerUpSeleccionado = catalogo.find{powerUp_ => powerUp_.nombre() == "powerUp4"}  	
-	    
-					})*/
 	
  	game.onCollideDo(personaje, { objeto_ => objeto_.esChocado(personaje) }  )
 
