@@ -63,7 +63,7 @@ object tablero {
 			}
 		}
 	}
-
+	
 	method generarObjeto(columna,fila){
 		
 		    // Posicion Ruben 					Posicion Portal									Posicion Dealer
@@ -179,8 +179,6 @@ object tablero {
 			objeto_ => self.removerVisual(objeto_)}
 			objetosEnTablero.clear()
 			ruben.position(game.at(4,2))
-			portal.generarPosicion()
-			dealer.generarPosicion()
 			if(dealer.desaparecer()){			
 				game.addVisual(dealer)
 				dealer.desaparecer(false)		
@@ -194,7 +192,7 @@ object tablero {
 	    game.addVisual(texto_vidas)
 	    game.addVisual(texto_ataque)
 	    game.addVisual(texto_defensa)
-	    game.addVisual(texto_puntuacion)
+	    game.addVisual(texto_puntuacion)	    
 	}
 	
 	method cargarVisualesObjetosImportantes(){
@@ -202,5 +200,5 @@ object tablero {
 	    game.addVisual(portal)
 	    game.addVisual(ruben)
 	}		
-
+	
 }

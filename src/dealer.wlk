@@ -12,9 +12,11 @@ object dealer {
 	var cantPP4 = 0
 	var columna
 	var fila
+	var objetoSeleccionado
 	var property position
 	var property desaparecer = false //Desaparece una vez que interactue con el pjPrincipal y aparece al generar nuevo lvl
-	const catalogo = []
+	var catalogo = [powerUp1,powerUp2,powerUp3,powerUp4]
+	var posicionesPP = [game.at(3,6),game.at(4,6),game.at(5,6)]
 	const imagen = "assets/items/pelaAbajo.png" 
 	
 	
@@ -23,6 +25,7 @@ object dealer {
 	method fila() = fila
 	
 	method generarPosicion() {
+		posicionesPP = [game.at(3,6),game.at(4,6),game.at(5,6)]
 		columna = (0.randomUpTo(8)).roundUp()
 		fila = (2.randomUpTo(10)).roundUp()
 		if (columna == portal.columna() and fila == 10) {
@@ -33,15 +36,32 @@ object dealer {
 	
 
 	method esChocado(personaje){
-		if(!ruben.tienePowerUp()){
-		  self.mostrarOfertas(personaje)
+		if(ruben.tienePowerUp()){
+			game.say(self, "Ya tenés \n un Power Up")
+		}else{
+			 self.mostrarOfertas(personaje)
 		}
-		else game.say(self, "Ya tenés \n un Power Up")
+
 	}
-	
-	
-	
 	method mostrarOfertas(personaje){
+
+		fondoPowerUp.ponerFondo()
+		fondoPowerUp.cargarVisualesPP()
+		
+		personaje.moverse(false)
+		
+		self.mostrarPowerUpsBis()
+		self.mostrarPowerUpsBis()
+		self.mostrarPowerUpsBis()
+		
+		self.actualizarDealer()
+		personaje.comprar()
+		//personaje.seleccionarPowerUp()
+		//personaje.intentarComprar(personaje.powerUpSeleccionado())
+		//self.realizarIntercambio(ruben)
+
+		keyboard.del().onPressDo({self.removerVisuales(personaje)})
+		self.reponePowerUps()
 		/*
 		 * 2. Mostrar todos los Power Ups con sus precios
 		 * 2.2 Mostrar Precios + ¿Descripcion?
@@ -53,56 +73,20 @@ object dealer {
 		 * 5. ¿Sacar al dealer?
 		 * 6. Hacer que ruben se vuelva a mover 
 		 */
-		simulacroFondo.ponerFondo()
-		personaje.moverse(false)
-		self.mostrarPowerUps()
-		self.mostrarPowerUps()
-		self.mostrarPowerUps()
-		self.actualizarDealer()
-		personaje.seleccionarPowerUp()
-		personaje.intentarComprar(personaje.powerUpSeleccionado())
-		self.realizarIntercambio(ruben)
-
-		keyboard.del().onPressDo({self.removerVisuales(personaje)})	
+		
 }
 	
-	method mostrarPowerUps(){
-		const numero = (0.randomUpTo(4)).roundUp()
-		if(numero == 1 and cantPP1 == 0){
-			//Crear Power Up
-			game.addVisual(powerUp1)
-			catalogo.add(powerUp1)
-			cantPP1++	
-		}else if(numero == 1 and cantPP1 > 0){
-			// Volver a intentar generar un power up random
-			self.mostrarPowerUps()
-		}
-		if(numero == 2 and cantPP2 == 0){
-			game.addVisual(powerUp2)
-			catalogo.add(powerUp2)
-			cantPP2++		
-		}else if(numero == 2 and cantPP2 > 0){
-			self.mostrarPowerUps()
-		}
-		if(numero == 3 and cantPP3 == 0){
-			game.addVisual(powerUp3)
-			catalogo.add(powerUp3)	
-			cantPP3++		
-		}else if(numero == 3 and cantPP3 > 0){
-			self.mostrarPowerUps()
-		}
-		if(numero == 4 and cantPP4 == 0){
-			game.addVisual(powerUp4)
-			catalogo.add(powerUp4)	
-			cantPP4++		
-		}else if(numero == 4 and cantPP4 > 0){
-			self.mostrarPowerUps()
-		}
-
+	method reponePowerUps(){
+		catalogo = [powerUp1,powerUp2,powerUp3,powerUp4]
 	}
-	
-	
-		method actualizarDealer(){
+	method mostrarPowerUpsBis(){
+		objetoSeleccionado = catalogo.anyOne()
+		objetoSeleccionado.position(posicionesPP.first())
+		posicionesPP = posicionesPP.copyWithout(posicionesPP.first())
+		catalogo = catalogo.copyWithout(objetoSeleccionado)
+	}
+
+	method actualizarDealer(){
 		game.removeVisual(self)
 		self.position(game.at(4,9))
 		game.addVisual(self)
@@ -110,40 +94,41 @@ object dealer {
 	}
 	
 	
-		method realizarIntercambio(personaje){
+	method realizarIntercambio(personaje){
 		if(personaje.tienePowerUp()){
 			self.removerVisuales(personaje)
 		}
 		else game.say(self, "No te alcanza pa")
 	}
 
-	method reiniciarCatalogo() {
-		cantPP1 = 0
-		cantPP2 = 0
-		cantPP3 = 0
-		cantPP4 = 0
-		catalogo.clear()
-	}
-
 	method removerVisuales(personaje){
-		game.removeVisual(simulacroFondo)
+		game.removeVisual(fondoPowerUp)
 		game.removeVisual(self)
-		catalogo.forEach{powerUp_ => tablero.removerVisual(powerUp_)}
+		catalogo.forEach{powerUp_ => fondoPowerUp.removerVisual(powerUp_)}
 		personaje.moverse(true)
 		self.desaparecer(true)
-		self.reiniciarCatalogo()
 		if (ruben.tienePowerUp()){
 			game.addVisual(personaje.powerUpQueTiene())
+			}
 		}
-	}
 }
 
-object simulacroFondo{
+object fondoPowerUp{
 	const imagen = "assets/fondo/fondoCatalogo.png"
 	var property position = game.at(0,2)
 	
-	method image() = imagen
+	method image()= imagen
 	method ponerFondo(){
 		game.addVisual(self)
+	}
+	
+	method cargarVisualesPP(){
+	    game.addVisual(powerUp1)
+	    game.addVisual(powerUp2)
+	    game.addVisual(powerUp3)
+	    game.addVisual(powerUp4)
+	}
+	method removerVisual(powerUp_){
+		game.removeVisual(powerUp_)
 	}
 }

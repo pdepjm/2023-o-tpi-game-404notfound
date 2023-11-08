@@ -34,7 +34,7 @@ program juego {
    
     keyboard.space().onPressDo({
 			ruben.powerUpQueTiene().esUsado(ruben)
-		})
+	})
 
 	
  	game.onCollideDo(personaje, { objeto_ => objeto_.esChocado(personaje) }  )

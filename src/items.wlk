@@ -26,7 +26,6 @@ class Daga inherits Items{
 		super(personaje)
 
     }
-    
 }
 
 class Escudo inherits Items{
@@ -46,7 +45,6 @@ class Moneda inherits Items{
         personaje.monedas(personaje.monedas() + nivel)
     	super(personaje)
     }
-    
 }
 
 class Pocion inherits Items{
@@ -76,7 +74,7 @@ object powerUp1 {
 		
 	const imagen = "assets/items/powerUp1.png" 
 	const precio = 10
-	var property position = game.at(6,5)
+	var property position = game.at(6,15)
 	const  nombre = "powerUp1"
 	
 	method image() = imagen
@@ -100,7 +98,7 @@ object powerUp2 {
 		
 	const imagen = "assets/items/powerUp2.png" 
 	const precio = 10
-	var property position = game.at(6,7)
+	var property position = game.at(3,15)
 	const nombre = "powerUp2"
 
 	method image() = imagen
@@ -123,7 +121,7 @@ object powerUp3 {
 		
 	const imagen = "assets/items/powerUp3.png" 
 	const precio = 10
-	var property position = game.at(4,5)
+	var property position = game.at(4,15)
 	const nombre = "powerUp3"
 	
 	method image() = imagen
@@ -146,7 +144,7 @@ object powerUp4 {
 		
 	const  imagen = "assets/items/powerUp4.png"
 	const precio = 10 
-	var property position = game.at(4,7)
+	var property position = game.at(5,15)
 	const nombre = "powerUp4"
 	
 	method image() = imagen

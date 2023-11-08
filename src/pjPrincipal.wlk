@@ -11,7 +11,7 @@ class PjPrincipal{
     var property defensa = 1
     var property vida = 1
 	var property vidaMax = 3
-    var property monedas = 50
+    var property monedas = 0
     var property puntuacion = 0
     
     var property cantidadDeMovimiento = 1
@@ -34,63 +34,62 @@ class PjPrincipal{
 	method poderTotal() = ataque + defensa + vida
 	method podesMoverte() = moverse
 	
-method moverseHacia(direccion){
+	method moverseHacia(direccion){
     	if(self.podesMoverte()){
 	    	positionAnterior = position
 	        self.position(direccion.proximaPosicion(position))
 	        image = "assets/rubens/ruben_" + direccion.nombre() + ".png"
 	        self.cantidadDeMovimiento(1)		
     	}  
-}
-
-method moverseHaciaArriba(){
+	}
+	
+	method moverseHaciaArriba(){
     	self.moverseHacia(arriba)
-}
-
-method moverseHaciaAbajo(){
+	}
+	
+	method moverseHaciaAbajo(){
     	self.moverseHacia(abajo)
-}
-
-method moverseHaciaIzquierda(){
+	}
+	
+	method moverseHaciaIzquierda(){
     	self.moverseHacia(izquierda)
-}
-
-method moverseHaciaDerecha(){
+	}
+	
+	method moverseHaciaDerecha(){
     	self.moverseHacia(derecha)
-}
-
-method defendete(enemigo){
+	}
+	
+	method defendete(enemigo){
 		var aux = defensa
         defensa = self.reduccionAlDefenderse(enemigo, self.defensa())
         self.puntuarPorDefensa(enemigo, aux)
-        
+	        
         aux= ataque
         ataque = self.reduccionAlDefenderse(enemigo, self.ataque())     
         self.puntuarPorDefensa(enemigo, aux)
-        
+	        
         aux = vida
 //	    vida = self.reduccionAlDefenderse(enemigo, self.vida()) 
 		self.perderVida(enemigo.nivel())
         self.puntuarPorDefensa(enemigo, aux)
-}
-
-method reduccionAlDefenderse(enemigo, valor) = (valor - enemigo.nivel()).max(0)
-
-method puntuarPorDefensa(enemigo, valor) { // el método puntuación también actualiza el nivel del enemigo
+	}
+	
+	method reduccionAlDefenderse(enemigo, valor) = (valor - enemigo.nivel()).max(0)
+	
+	method puntuarPorDefensa(enemigo, valor) { // el método puntuación también actualiza el nivel del enemigo
         self.puntuacion(puntuacion + enemigo.nivel() * 10)    
 		enemigo.nuevoNivel((enemigo.nivel() - valor).max(0))   
-}
-
-
-    method agarrar(item)
-    {
-    	item.esChocado(self)
-    }
-
-
-    method boquear(){
-	        game.say(self, "A casa bicho raro")		
-    }
+	}
+	
+	
+	method agarrar(item){
+		item.esChocado(self)
+	}
+	
+	
+	method boquear(){
+	    game.say(self, "A casa bicho raro")		
+	}
     
     method tieneVida() = self.vida() > 0 
     
@@ -98,7 +97,8 @@ method puntuarPorDefensa(enemigo, valor) { // el método puntuación también ac
     	image = "assets/monstruos/cenizas.png"
     	self.moverse(false)
     	//pasar a pantalla de GAME OVER
-    	game.schedule(5000, {=>game.stop()})
+    	fondoGameOver.ponerFondo()
+    	game.schedule(3000, {=>game.stop()})
 
     }
     
@@ -109,8 +109,8 @@ method puntuarPorDefensa(enemigo, valor) { // el método puntuación también ac
     }
     
     method perderVida(cantidad){
-    vida = (vida - cantidad).max(0)
-    self.morirSiNoTieneVida()
+    	vida = (vida - cantidad).max(0)
+    	self.morirSiNoTieneVida()
 }
     
     method volverAPosicion(){
@@ -122,40 +122,43 @@ method puntuarPorDefensa(enemigo, valor) { // el método puntuación también ac
 
     method seleccionarPowerUp(){
     	if(!self.podesMoverte()){
-		self.auxiliar()
-		self.intentarComprar(powerUpSeleccionado)
+			self.auxiliar()
+//			self.intentarComprar(powerUpSeleccionado)
 	}
 }
 	
 	method auxiliar(){
 	    keyboard.num1().onPressDo({
-		powerUpSeleccionado = powerUp1
+			powerUpSeleccionado = powerUp1
 	    })
 	    keyboard.num2().onPressDo({
-		powerUpSeleccionado = powerUp2
+			powerUpSeleccionado = powerUp2
 	    })
 	    keyboard.num3().onPressDo({
-		powerUpSeleccionado = powerUp3
+			powerUpSeleccionado = powerUp3
 	    })
 	    keyboard.num4().onPressDo({
-		powerUpSeleccionado = powerUp4	
+			powerUpSeleccionado = powerUp4	
 		})
 	}
 	
-	method intentarComprar(powerUp) {
-		if (self.puedeComprar(powerUp)) {
-			self.comprar(powerUp)
-		}
-	}
+//	method intentarComprar(powerUp) {
+//		if (self.puedeComprar(powerUp)) {
+//			self.comprar(powerUp)
+//		}
+//	}
 	
     method puedeComprar(powerUp_) = self.monedas() >= powerUp_.precio()
-    method comprar(powerUp_) {
-    		monedas -= powerUp_.precio()
-    		powerUp_.position(game.at(8,0))
+    method comprar() {
+    	self.seleccionarPowerUp()
+    	if(self.puedeComprar(powerUpSeleccionado)){
+    		monedas -= powerUpSeleccionado.precio()
+    		powerUpSeleccionado.position(game.at(8,0))
     		self.tienePowerUp(true)
-    		self.powerUpQueTiene(powerUp_)	
-    		}
-    }
+    		self.powerUpQueTiene(powerUpSeleccionado)	    		
+    	}
+	}
+}
     
 object arriba{
 	
@@ -186,6 +189,15 @@ object izquierda{
 	method nombre() = "izquierda"
 	method proximaPosicion(position) {
 		return position.left(ruben.cantidadDeMovimiento())
+	}
+}
+object fondoGameOver{
+	const imagen = "assets/fondo/game_over.png"
+	var property position = game.at(0,0)
+	
+	method image() = imagen
+	method ponerFondo(){
+		game.addVisual(self)
 	}
 }
 const ruben = new PjPrincipal()
