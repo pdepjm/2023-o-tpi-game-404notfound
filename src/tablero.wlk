@@ -24,8 +24,6 @@ object portal {
 	method generarNivel() {
 		
 		tablero.limpiarse()
-		    
-    //	tablero.cargarVisualesInicio()
 	}
 
 	method esChocado(personaje){
@@ -143,9 +141,10 @@ object tablero {
 	method generarParedes() {
 			
 		new Range(start = 0, end = game.width()).forEach{
-				columna => self.generarPared(columna,1)
+			columna => new Range(start = 0, end = 1).forEach{
+				fila => self.generarPared(columna,fila)
 			}
-
+		}
 		new Range(start = 0, end = game.width()).forEach{
 				columna => self.generarPared(columna,11)
 			}
@@ -157,8 +156,8 @@ object tablero {
 		new Range(start = 2, end = 10).forEach{
 				fila => self.generarPared(9,fila)
 			}
+	
 }
-
 	method generarPared(columna,fila){
 		
 		const pared = new Pared(position = game.at(columna, fila))

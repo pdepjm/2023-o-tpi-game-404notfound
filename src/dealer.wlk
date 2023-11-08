@@ -90,10 +90,7 @@ object dealer {
 		stock.forEach{powerUp_ => tablero.removerVisual(powerUp_)}
 		personaje.moverse(true)
 		self.desaparecer(true)
-		if (ruben.tienePowerUp()){
-			game.addVisual(personaje.powerUpQueTiene())
-			}
-		}
+	}
 }
 
 object fondoPowerUp{

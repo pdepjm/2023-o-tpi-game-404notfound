@@ -154,6 +154,7 @@ class PjPrincipal{
 		self.tienePowerUp(true)
 		self.powerUpQueTiene(powerUp)
 		dealer.removerVisuales(self)	    		
+		game.addVisual(self.powerUpQueTiene())
 	}
 }
     
