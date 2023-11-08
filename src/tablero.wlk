@@ -145,18 +145,24 @@ object tablero {
 				fila => self.generarPared(columna,fila)
 			}
 		}
+		
 		new Range(start = 0, end = game.width()).forEach{
-				columna => self.generarPared(columna,11)
+			columna => new Range(start = 11, end = 12).forEach{
+				fila => self.generarPared(columna,fila)
 			}
-			
-		new Range(start = 2, end = 10).forEach{
-				fila => self.generarPared(-1,fila)
+		}
+
+		new Range(start = -2, end = -1).forEach{
+			columna => new Range(start = 2, end = 10).forEach{
+				fila => self.generarPared(columna,fila)
 			}
-			
-		new Range(start = 2, end = 10).forEach{
-				fila => self.generarPared(9,fila)
+		}
+
+		new Range(start = 9, end = 10).forEach{
+			columna => new Range(start = 2, end = 10).forEach{
+				fila => self.generarPared(columna,fila)
 			}
-	
+		}			
 }
 	method generarPared(columna,fila){
 		
