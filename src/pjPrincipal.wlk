@@ -69,7 +69,8 @@ method defendete(enemigo){
         self.puntuarPorDefensa(enemigo, aux)
         
         aux = vida
-        vida = self.reduccionAlDefenderse(enemigo, self.vida()) 
+//	    vida = self.reduccionAlDefenderse(enemigo, self.vida()) 
+		self.perderVida(enemigo.nivel())
         self.puntuarPorDefensa(enemigo, aux)
 }
 
@@ -101,11 +102,16 @@ method puntuarPorDefensa(enemigo, valor) { // el método puntuación también ac
 
     }
     
-    method estasVivo(){
+    method morirSiNoTieneVida(){
     	if(!self.tieneVida()){
     		self.morir()
     	}
     }
+    
+    method perderVida(cantidad){
+    vida = (vida - cantidad).max(0)
+    self.morirSiNoTieneVida()
+}
     
     method volverAPosicion(){
     	position = positionAnterior

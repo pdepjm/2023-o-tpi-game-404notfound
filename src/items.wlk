@@ -65,7 +65,7 @@ class Pinches inherits Items{
     override method esChocado(personaje){
         personaje.vida((personaje.vida() - nivel).max(0))
         imagen = "assets/items/pinchosSangre.png"
-        personaje.estasVivo()
+        personaje.morirSiNoTieneVida()
     }
 
 }
