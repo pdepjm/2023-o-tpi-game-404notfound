@@ -11,7 +11,7 @@ class PjPrincipal{
     var property defensa = 1
     var property vida = 1
 	var property vidaMax = 3
-    var property monedas = 0
+    var property monedas = 50
     var property puntuacion = 0
     
     var property cantidadDeMovimiento = 1
@@ -121,42 +121,39 @@ class PjPrincipal{
 
 
     method seleccionarPowerUp(){
-    	if(!self.podesMoverte()){
 			self.auxiliar()
-//			self.intentarComprar(powerUpSeleccionado)
-	}
 }
 	
 	method auxiliar(){
 	    keyboard.num1().onPressDo({
-			powerUpSeleccionado = powerUp1
+			self.powerUpSeleccionado(dealer.obtenerPowerUpEnNPosicion(0))
+			self.intentarComprar(powerUpSeleccionado)
 	    })
 	    keyboard.num2().onPressDo({
-			powerUpSeleccionado = powerUp2
+			self.powerUpSeleccionado(dealer.obtenerPowerUpEnNPosicion(1))
+			self.intentarComprar(powerUpSeleccionado)
 	    })
 	    keyboard.num3().onPressDo({
-			powerUpSeleccionado = powerUp3
+			self.powerUpSeleccionado(dealer.obtenerPowerUpEnNPosicion(2))
+			self.intentarComprar(powerUpSeleccionado)
 	    })
-	    keyboard.num4().onPressDo({
-			powerUpSeleccionado = powerUp4	
-		})
 	}
 	
-//	method intentarComprar(powerUp) {
-//		if (self.puedeComprar(powerUp)) {
-//			self.comprar(powerUp)
-//		}
-//	}
+	method intentarComprar(powerUp) {
+		if(self.puedeComprar(powerUp)) {
+			self.comprar(powerUp)
+		}else{
+			game.say(dealer, "No te alcanza pa")
+		}
+	}
 	
     method puedeComprar(powerUp_) = self.monedas() >= powerUp_.precio()
-    method comprar() {
-    	self.seleccionarPowerUp()
-    	if(self.puedeComprar(powerUpSeleccionado)){
-    		monedas -= powerUpSeleccionado.precio()
-    		powerUpSeleccionado.position(game.at(8,0))
-    		self.tienePowerUp(true)
-    		self.powerUpQueTiene(powerUpSeleccionado)	    		
-    	}
+    method comprar(powerUp) {
+		monedas -= powerUp.precio()
+		powerUp.position(game.at(8,0))
+		self.tienePowerUp(true)
+		self.powerUpQueTiene(powerUp)
+		dealer.removerVisuales(self)	    		
 	}
 }
     
