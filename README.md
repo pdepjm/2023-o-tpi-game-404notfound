@@ -1,44 +1,44 @@
 
 LA AVENTURA DE RUBÉN
 
-## Personajes
+# Personajes
 
-# Ruben
+## Ruben
 Nuestro héroe en este lío.
 Cuenta con las siguientes características iniciales: 
 Vida: 1 de vida. 
 Ataque: 1 de ataque. 
 Defensa: 1 de defensa. 
 Monedas: 0 monedas.
-# Dealer
+## Dealer
 Es un comerciante con el que Ruben puede intercambiar las monedas que ha recolectado. Por cada 10 monedas, tiene la oportunidad de adquirir uno de los tres power-ups disponibles en el catálogo.
 
 Monstruos
-# Alien (Nivel 1)
+## Alien (Nivel 1)
  - Vida: 1 de vida.
  - Ataque: 1 de ataque.
 
-# Vikingo (Nivel 2) 
+## Vikingo (Nivel 2) 
  - Vida: 2 de vida. 
  - Ataque: 2 de ataque.
 
-# Mago (Nivel 3)
+## Mago (Nivel 3)
  - Vida: 3 de vida. 
  - Ataque: 3 de ataque.
-## Items
+# Items
 Se van a poder encontrar los siguientes ítems a lo largo del mapa.
 Todas tienen efecto únicamente en el héroe
-# Moneda
+## Moneda
 
  Estas monedas se van a poder intercambiar con el dealer.
-# Defensa
+## Defensa
  - Nivel 1 - sube 1 nivel de defensa
 
  - Nivel 2 - sube 2 niveles de defensa
 
  - Nivel 3 - sube 3 niveles de defensa
 
-# Ataque
+## Ataque
 
  - Nivel 1 - sube 1 nivel de ataque
 
@@ -47,22 +47,22 @@ Todas tienen efecto únicamente en el héroe
  - Nivel 3 - sube 3 niveles de ataque
 
 
-# Vida
+## Vida
  - Nivel 1 - sube 1 nivel de vida
 
  - Nivel 2 - sube 2 niveles de vida
 
-# Pinchos
+## Pinchos
  
  - Restan 1 nivel de vida
 
-# PowerUps
+## PowerUps
 
 - Aumenta los atributos de Ruben: 
    Vida en 1.
    Ataque en 1.
    Defensa en 1.
-	 Precio: ??
+   Precio: 5
 
 
 - Aumenta la vida máxima una unidad.
@@ -74,7 +74,7 @@ Todas tienen efecto únicamente en el héroe
 
 
 - Permite a Rubén saltear una casilla
-   Precio: ??
+   Precio: 5
 
 # Portal
 
@@ -89,8 +89,10 @@ Cuando la defensa se agota por completo, comienza a perder puntos de ataque.
 Finalmente, si su nivel de ataque llega a 0, nuestro personaje pierde vida.
 Por lo tanto, el orden de daño recibido es: Defensa -> Ataque -> Vida
 Ataque al monstruo
-Si Ruben posee un nivel de ataque mayor o igual al nivel de vida del monstruo, el monstruo muere y se convierte en ceniza.
-De esta manera, Rubén debe utilizar sabiamente sus estadísticas para enfrentar y vencer a los monstruos en su búsqueda de la libertad.
+Si Ruben posee un nivel de (ataque, defensa o vida) mayor o igual al nivel de vida del monstruo, el monstruo muere y se convierte en ceniza. Perdiendo Ruben el nivel en orden de daño recibido.
+De esta manera, Rubén debe utilizar sabiamente sus estadísticas para enfrentar y vencer al monstruo final en búsqueda de la libertad.
 Intercambio con el Dealer
-Por cada nivel, el Dealer ofrece 3 powerUps aleatorios de 4 que posee. Cada powerUp que el personaje compre, podrá ser únicamente utilizado en el mismo nivel. 
+Por cada nivel, el Dealer ofrece 3 powerUps aleatorios de 4 que posee, cada uno tiene un precio diferente según su complejidad. Cada powerUp que el personaje compre, podrá ser únicamente utilizado en el mismo nivel. 
 Una vez que Rubén compre algún PowerUp este mismo no podrá ser intercambiado en los siguientes niveles.
+
+
