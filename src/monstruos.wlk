@@ -73,7 +73,12 @@ class Monstruo {
 	}
 	
 	method esChocado(personaje){
-		self.esAtacado(personaje)
+		if (self.nivel()!=0){
+			const fight = game.sound("assets/sonidos/fight.mp3")
+			fight.play()
+		}
+		self.esAtacado(personaje)		
+	
 	}
 
 }

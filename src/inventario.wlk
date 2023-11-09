@@ -45,7 +45,7 @@ object texto_puntuacion {
 
     method position() = game.at(0,1)
 
-    method text() = "Puntuacion: " + ruben.puntuacion()
+    method text() = "Score: " + ruben.puntuacion()
     
     method esChocado(personaje){}
 }
@@ -107,5 +107,13 @@ object precio_3 {
 	method obtenerPrecio() = self.obtenerPowerUp().precio()
     method text() = self.obtenerPrecio().toString()
         
+    method esChocado(personaje){}
+}
+
+object text_precio {
+
+    method position() = game.at(4,8)
+
+    method text() = "Precios :)"
     method esChocado(personaje){}
 }

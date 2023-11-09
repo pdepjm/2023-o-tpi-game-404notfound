@@ -70,6 +70,7 @@ object dealer {
 		game.addVisual(precio_1)
 		game.addVisual(precio_2)
 		game.addVisual(precio_3)
+		game.addVisual(text_precio)
 	}
 	
 	method removerVisualesTienda(){
@@ -79,6 +80,7 @@ object dealer {
 		game.removeVisual(precio_1)
 		game.removeVisual(precio_2)
 		game.removeVisual(precio_3)
+		game.removeVisual(text_precio)
 	}	
 	method reponePowerUps(){
 		catalogo = [powerUp1,powerUp2,powerUp3,powerUp4]
