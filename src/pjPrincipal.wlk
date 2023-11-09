@@ -10,6 +10,7 @@ class PjPrincipal{
     var property ataque = 1
     var property defensa = 1
     var property vida = 1
+    
 	var property vidaMax = 3
     var property monedas = 50
     var property puntuacion = 0
@@ -24,11 +25,10 @@ class PjPrincipal{
     
     var positionAnterior = position
 	
-    
     method image() = image
     method ataque() = ataque.min(5)
     method defensa() = defensa.min(5)
-    method vida() = vida.min(vidaMax)
+   	method subirVida(cantidad) = (vida+cantidad).min(vidaMax)
     method monedas() = monedas
 	method poderTotal() = ataque + defensa + vida
 	method podesMoverte() = moverse

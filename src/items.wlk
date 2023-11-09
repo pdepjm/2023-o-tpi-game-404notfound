@@ -50,12 +50,10 @@ class Moneda inherits Items{
 class Pocion inherits Items{
 
     override method esChocado(personaje){
-    	personaje.vida(personaje.vida() + nivel)
+    	//personaje.vida(personaje.vida() + nivel)
+    	personaje.vida(personaje.subirVida(self.nivel()))
     	super(personaje)
-
-
-    }
-
+	}
 }
 
 class Pinches inherits Items{
