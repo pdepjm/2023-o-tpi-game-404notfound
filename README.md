@@ -2,7 +2,7 @@
 PDF PRESENTADO EN CLASE CON IMAGENES DEL OBJETO: 
 [Guia de Juego - TP Wollok Game - 404notFound.pdf](https://github.com/pdepjm/2023-o-tpi-game-404notfound/files/13304008/Guia.de.Juego.-.TP.Wollok.Game.-.404notFound.pdf)
 
-LA AVENTURA DE RUBÉN
+### LA AVENTURA DE RUBÉN
 
 # Personajes
 
