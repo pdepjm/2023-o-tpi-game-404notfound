@@ -2,51 +2,59 @@
 PDF PRESENTADO EN CLASE CON IMAGENES DE LOS PERSONAJES/ITEMS: 
 [Guia de Juego - TP Wollok Game - 404notFound.pdf](https://github.com/pdepjm/2023-o-tpi-game-404notfound/files/13304008/Guia.de.Juego.-.TP.Wollok.Game.-.404notFound.pdf)
 
-### LA AVENTURA DE RUBÉN
+## Equipo de desarrollo
 
-# Personajes
+- Aristia, Iñaki
+- Britos Garabello, Aylen Magali
+- Formoso, Federico
+- Montagnese, Joaquin
+- Moreno Vera, Franco Augusto
 
-## Ruben
+# LA AVENTURA DEL ROBOT RUBÉN
+
+## Personajes
+
+### Ruben
 Nuestro héroe en este lío.
 Cuenta con las siguientes características iniciales: 
 Vida: 1 de vida. 
 Ataque: 1 de ataque. 
 Defensa: 1 de defensa. 
 Monedas: 0 monedas.
-## Dealer
+### Dealer
 Es un comerciante con el que Ruben puede intercambiar las monedas que ha recolectado. Por cada 10 monedas, tiene la oportunidad de adquirir uno de los tres power-ups disponibles en el catálogo.
 
-Monstruos
-## Alien (Nivel 1)
+## Monstruos
+### Alien (Nivel 1)
  - Vida: 1 de vida.
  - Ataque: 1 de ataque.
 
-## Vikingo (Nivel 2) 
+### Vikingo (Nivel 2) 
  - Vida: 2 de vida. 
  - Ataque: 2 de ataque.
 
-## Mago (Nivel 3)
+### Mago (Nivel 3)
  - Vida: 3 de vida. 
  - Ataque: 3 de ataque.
 
-## Monstruo Final (Nivel 10)
+### Monstruo Final (Nivel 10)
  - Vida: 10 de vida. 
  - Ataque: 10 de ataque.
 
-# Items
+## Items
 Se van a poder encontrar los siguientes ítems a lo largo del mapa.
 Todas tienen efecto únicamente en el héroe
-## Moneda
+### Moneda
 
  Estas monedas se van a poder intercambiar con el dealer.
-## Defensa
+### Defensa
  - Nivel 1 - sube 1 nivel de defensa
 
  - Nivel 2 - sube 2 niveles de defensa
 
  - Nivel 3 - sube 3 niveles de defensa
 
-## Ataque
+### Ataque
 
  - Nivel 1 - sube 1 nivel de ataque
 
@@ -55,16 +63,16 @@ Todas tienen efecto únicamente en el héroe
  - Nivel 3 - sube 3 niveles de ataque
 
 
-## Vida
+### Vida
  - Nivel 1 - sube 1 nivel de vida
 
  - Nivel 2 - sube 2 niveles de vida
 
-## Pinchos
+### Pinchos
  
  - Restan 1 nivel de vida
 
-## PowerUps
+### PowerUps
 
 - Aumenta los atributos de Ruben: 
    Vida en 1.
@@ -84,11 +92,11 @@ Todas tienen efecto únicamente en el héroe
 - Permite a Rubén saltear una casilla
    Precio: 5
 
-# Portal
+## Portal
 
  Teletransporta a Ruben al siguiente nivel.
 
-# Juego
+## Juego
 En su camino hacia la libertad, Rubén se enfrentará con diversos tipos de monstruos. 
 Para derrotar a estos seres horribles, nuestro personaje debe asegurarse de que la suma de sus estadísticas (ataque, defensa y vida) sea mayor que el nivel del monstruo.
 La batalla se desarrolla de la siguiente manera:
@@ -104,3 +112,8 @@ Por cada nivel, el Dealer ofrece 3 powerUps aleatorios de 4 que posee, cada uno 
 Una vez que Rubén compre algún PowerUp este mismo no podrá ser intercambiado en los siguientes niveles.
 
 
+## Otros
+
+- Curso Jueves Mañana - Universidad Tecnologica Nacional, Facultad Regional Buenos Aires
+- Versión de wollok 9.11.2023
+- Una vez terminado, no tenemos problemas en que el repositorio sea público.
