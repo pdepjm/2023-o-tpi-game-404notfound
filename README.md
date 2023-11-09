@@ -1,44 +1,44 @@
 
 LA AVENTURA DE RUBÉN
 
-##Personajes
+## Personajes
 
-#Ruben
+# Ruben
 Nuestro héroe en este lío.
 Cuenta con las siguientes características iniciales: 
 Vida: 1 de vida. 
 Ataque: 1 de ataque. 
 Defensa: 1 de defensa. 
 Monedas: 0 monedas.
-#Dealer
+# Dealer
 Es un comerciante con el que Ruben puede intercambiar las monedas que ha recolectado. Por cada 10 monedas, tiene la oportunidad de adquirir uno de los tres power-ups disponibles en el catálogo.
 
 Monstruos
-#Alien (Nivel 1)
+# Alien (Nivel 1)
  - Vida: 1 de vida.
  - Ataque: 1 de ataque.
 
-#Vikingo (Nivel 2) 
+# Vikingo (Nivel 2) 
  - Vida: 2 de vida. 
  - Ataque: 2 de ataque.
 
-#Mago (Nivel 3)
+# Mago (Nivel 3)
  - Vida: 3 de vida. 
  - Ataque: 3 de ataque.
-##Items
+## Items
 Se van a poder encontrar los siguientes ítems a lo largo del mapa.
 Todas tienen efecto únicamente en el héroe
-#Moneda
+# Moneda
 
  Estas monedas se van a poder intercambiar con el dealer.
-#Defensa
+# Defensa
  - Nivel 1 - sube 1 nivel de defensa
 
  - Nivel 2 - sube 2 niveles de defensa
 
  - Nivel 3 - sube 3 niveles de defensa
 
-#Ataque
+# Ataque
 
  - Nivel 1 - sube 1 nivel de ataque
 
@@ -47,16 +47,16 @@ Todas tienen efecto únicamente en el héroe
  - Nivel 3 - sube 3 niveles de ataque
 
 
-#Vida
+# Vida
  - Nivel 1 - sube 1 nivel de vida
 
  - Nivel 2 - sube 2 niveles de vida
 
-#Pinchos
+# Pinchos
  
  - Restan 1 nivel de vida
 
-#PowerUps
+# PowerUps
 
 - Aumenta los atributos de Ruben: 
    Vida en 1.
@@ -76,11 +76,11 @@ Todas tienen efecto únicamente en el héroe
 - Permite a Rubén saltear una casilla
    Precio: ??
 
-#Portal
+# Portal
 
  Teletransporta a Ruben al siguiente nivel.
 
-#Juego
+# Juego
 En su camino hacia la libertad, Rubén se enfrentará con diversos tipos de monstruos. 
 Para derrotar a estos seres horribles, nuestro personaje debe asegurarse de que la suma de sus estadísticas (ataque, defensa y vida) sea mayor que el nivel del monstruo.
 La batalla se desarrolla de la siguiente manera:
