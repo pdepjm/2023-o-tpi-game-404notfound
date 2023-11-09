@@ -23,12 +23,11 @@ object dealer {
 			
 		columna = (0.randomUpTo(8)).roundUp()
 		fila = (2.randomUpTo(10)).roundUp()
-		if (columna == portal.columna() and fila == 10) {
+		if(posicionesImportantes.esPosicionImportante(columna,fila)) {
 			self.generarPosicion()
 		}
     	position = game.at(columna,fila)
 	}
-	
 
 	method esChocado(personaje){
 		if(ruben.tienePowerUp()){

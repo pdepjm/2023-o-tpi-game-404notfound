@@ -33,7 +33,7 @@ program juego {
     })    
    
     keyboard.space().onPressDo({
-			ruben.powerUpQueTiene().esUsado(ruben)
+		ruben.powerUpQueTiene().esUsado(ruben)
 	})
 
 	

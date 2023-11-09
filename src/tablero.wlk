@@ -20,16 +20,19 @@ object portal {
 	method generarPosicion() {
 		columna = (0.randomUpTo(8)).roundUp()
     	position = game.at(columna,fila)
+    	if(posicionesImportantes.esPosicionImportante(columna,fila)){
+    		self.generarPosicion()
+    	}
 	}
 	
 	method generarNivel() {
-		
 		tablero.limpiarse()
+		tablero.generarObjetosTablero()
 	}
 
 	method esChocado(personaje){
-		self.generarNivel()
 		tablero.pasarNivel()
+		self.generarNivel()
 	}
 }
 
@@ -63,19 +66,45 @@ object tablero {
 
 	method generarObjetosTablero(){
 		
-		if (nivel == 5) {
+		if (nivel == 2) {
+
+			portal.position(game.at(null,null))
+			posicionesImportantes.agregrarPosicion(portal.position())			
 	 		game.removeVisual(portal)
-			const mounstruoFinal = new Monstruo(nivel = 15,position = game.at(0,11), imagen = "assets/monstruos/monstruo1.png")
+
+			const mounstruoFinal = new Monstruo(nivel = 10,position = game.at(0,10), imagen = "assets/monstruos/finalBoss.png")
 			game.addVisual(mounstruoFinal)	 
-		} 
-		dealer.generarPosicion()		
-		portal.generarPosicion()
-		posicionesImportantes.actualizarPosiciones()		
-		new Range(start = 2, end = game.width()+1).forEach{
-			fila => new Range(start = 0, end = game.height()).forEach{
-				columna => self.generarObjeto(columna,fila)
-				}
-			}
+			posicionesImportantes.agregrarPosicion(mounstruoFinal.position())
+			
+			ruben.generarPosicion()
+			posicionesImportantes.agregrarPosicion(ruben.position())	
+
+			dealer.generarPosicion()					
+			posicionesImportantes.agregrarPosicion(dealer.position())	
+
+		
+			new Range(start = 2, end = game.width()+1).forEach{
+				fila => new Range(start = 0, end = game.height()).forEach{
+					columna => self.generarObjeto(columna,fila)
+					}
+				}			
+			
+		}else{
+			ruben.generarPosicion()
+			posicionesImportantes.agregrarPosicion(ruben.position())	
+						
+			dealer.generarPosicion()
+			posicionesImportantes.agregrarPosicion(dealer.position())	
+			
+			portal.generarPosicion()
+			posicionesImportantes.agregrarPosicion(portal.position())	
+
+			new Range(start = 2, end = game.width()+1).forEach{
+				fila => new Range(start = 0, end = game.height()).forEach{
+					columna => self.generarObjeto(columna,fila)
+					}
+				}			
+		}
 }
 	method generarObjeto(columna,fila){
 		   
@@ -199,15 +228,14 @@ object tablero {
 		
 		objetosEnTablero.asSet().asList()
 		
-		objetosEnTablero.forEach{
-			objeto_ => self.removerVisual(objeto_)}
-			objetosEnTablero.clear()
-			ruben.position(game.at(4,2))
-			if(dealer.desaparecer()){			
-				game.addVisual(dealer)
-				dealer.desaparecer(false)		
-			}
-			self.generarObjetosTablero()
+		objetosEnTablero.forEach{objeto_ => self.removerVisual(objeto_)}
+		objetosEnTablero.clear()
+		posicionesImportantes.borrarPosiciones()
+		ruben.position(game.at(4,2))
+		if(dealer.desaparecer()){			
+			game.addVisual(dealer)
+			dealer.desaparecer(false)		
+		}
 	}
 					
 	method cargarVisualesInicio(){
@@ -226,10 +254,12 @@ object tablero {
 	}
 }
 object posicionesImportantes{
-	var posicionesImportantes = [ruben.position(),dealer.position(),portal.position()]
+	var posicionesImportantes = []
 	
-	method actualizarPosiciones(){
-		posicionesImportantes = [ruben.position(),dealer.position(),portal.position()]
-	}
 	method esPosicionImportante(columna,fila) = posicionesImportantes.contains(game.at(columna,fila))
+
+	method agregrarPosicion(posicion) = posicionesImportantes.add(posicion)
+	
+	method borrarPosiciones() = posicionesImportantes.clear()
+
 }			

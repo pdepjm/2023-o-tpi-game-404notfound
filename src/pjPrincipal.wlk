@@ -17,7 +17,6 @@ class PjPrincipal{
     var property cantidadDeMovimiento = 1
     var property moverse = true
     var property position = game.at(4,2)
-    var property seleccionoPowerUp = false
     var property powerUpSeleccionado = powerUpNulo
     var property tienePowerUp = false
     var property powerUpQueTiene = powerUpNulo
@@ -33,7 +32,9 @@ class PjPrincipal{
     method monedas() = monedas
 	method poderTotal() = ataque + defensa + vida
 	method podesMoverte() = moverse
-	
+	method generarPosicion(){
+		self.position(game.at(4,2))
+	}
 	method moverseHacia(direccion){
     	if(self.podesMoverte()){
 	    	positionAnterior = position
