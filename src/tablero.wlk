@@ -28,6 +28,7 @@ object portal {
 
 	method esChocado(personaje){
 		self.generarNivel()
+		tablero.pasarNivel()
 	}
 }
 
@@ -47,23 +48,35 @@ class Pared {
 object tablero {
 	
 	// Actualizar el nivel del monstruo - VER
+	var nivel = 1
+	
 	var nivelMonstruo = 2
 	
 	const objetosEnTablero = []
+	
+	method pasarNivel(){
+		nivel +=1
+	}
 	
 	method nivelMonstruo(nuevoNivel) {nivelMonstruo = nuevoNivel} 
 
 	method generarObjetosTablero(){
 		
-		dealer.generarPosicion()		
-		portal.generarPosicion()
-		
+		if (nivel < 5) {
+			dealer.generarPosicion()		
+			portal.generarPosicion()		
 		new Range(start = 2, end = game.width()+1).forEach{
 			fila => new Range(start = 0, end = game.height()).forEach{
 				columna => self.generarObjeto(columna,fila)
+				}
 			}
 		}
-	}
+		else if (nivel == 5) {
+			/*
+			 * No tiene que haber portal; tiene que estar el monstruo final en su lugar
+			 */
+		} 
+}
 	
 	method generarObjeto(columna,fila){
 		
@@ -212,6 +225,5 @@ object tablero {
 	    game.addVisual(dealer)
 	    game.addVisual(portal)
 	    game.addVisual(ruben)
-	}		
-	
+	}			
 }

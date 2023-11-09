@@ -5,33 +5,22 @@ import tablero.*
 
 object dealer {
 	
-	/* Para que se genere exactamente un Power Up de cada tipo - Ver una forma mejor
-	var cantPP1 = 0
-	var cantPP2 = 0
-	var cantPP3 = 0
-	var cantPP4 = 0
-	*/
 	var columna
 	var fila
 	var objetoSeleccionado
 	var property position
 	var property desaparecer = false //Desaparece una vez que interactue con el pjPrincipal y aparece al generar nuevo lvl
-	var catalogo = [powerUp1,powerUp2,powerUp3,powerUp4]
-	var posicionesPP = [game.at(3,6),game.at(4,6),game.at(5,6)]
-	var stock = []
+	var catalogo
+	var posicionesPP
+	var stock
 	const imagen = "assets/items/pelaAbajo.png" 
-	
 	
 	method image() = imagen	
 	method columna() = columna
 	method fila() = fila
 	
 	method generarPosicion() {
-
-		posicionesPP = [game.at(3,6),game.at(4,6),game.at(5,6)]
-		stock = []
-		self.reponePowerUps()
-		
+			
 		columna = (0.randomUpTo(8)).roundUp()
 		fila = (2.randomUpTo(10)).roundUp()
 		if (columna == portal.columna() and fila == 10) {
@@ -44,16 +33,23 @@ object dealer {
 	method esChocado(personaje){
 		if(ruben.tienePowerUp()){
 			game.say(self, "Ya tenés \n un Power Up")
+			game.schedule(2500, {=>game.removeVisual(self)})
+			self.desaparecer(true)
 		}else{
 			 self.mostrarOfertas(personaje)
 		}
 
 	}
 	method mostrarOfertas(personaje){
-
+	
 		keyboard.del().onPressDo({self.removerVisuales(personaje)})
-		fondoPowerUp.ponerFondo()
 
+		fondoPowerUp.ponerFondo()
+		
+		self.reponePowerUps()
+		self.cargarPosicionesPP()
+		stock = []
+		
 		personaje.moverse(false)
 		
 		self.mostrarPowerUp()
@@ -67,6 +63,9 @@ object dealer {
 	
 	method reponePowerUps(){
 		catalogo = [powerUp1,powerUp2,powerUp3,powerUp4]
+	}
+	method cargarPosicionesPP(){
+		posicionesPP = [game.at(3,6),game.at(4,6),game.at(5,6)]
 	}
 	method mostrarPowerUp(){
 		objetoSeleccionado = catalogo.anyOne()
@@ -86,11 +85,16 @@ object dealer {
 	}
 
 	method removerVisuales(personaje){
-		game.removeVisual(fondoPowerUp)
-		game.removeVisual(self)
-		stock.forEach{powerUp_ => tablero.removerVisual(powerUp_)}
-		personaje.moverse(true)
-		self.desaparecer(true)
+		if(!personaje.podesMoverte()){
+			game.removeVisual(fondoPowerUp)
+			self.desaparecer(true)
+			game.removeVisual(self)
+			stock.forEach{powerUp_ => self.removerVisual(powerUp_)}
+			personaje.moverse(true)
+		}
+	}
+	method removerVisual(powerUp_){
+		game.removeVisual(powerUp_)
 	}
 }
 

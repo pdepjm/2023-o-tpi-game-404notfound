@@ -98,7 +98,7 @@ class PjPrincipal{
     	self.moverse(false)
     	//pasar a pantalla de GAME OVER
     	fondoGameOver.ponerFondo()
-    	const gameOver= game.sound("assets/sonidos/gameOver.mp3")
+    	const gameOver = game.sound("assets/sonidos/gameOver.mp3")
 		gameOver.play()
     	game.schedule(3000, {=>game.stop()})
 
@@ -127,6 +127,7 @@ class PjPrincipal{
 }
 	
 	method auxiliar(){
+		
 	    keyboard.num1().onPressDo({
 			self.powerUpSeleccionado(dealer.obtenerPowerUpEnNPosicion(0))
 			self.intentarComprar(powerUpSeleccionado)
@@ -142,9 +143,9 @@ class PjPrincipal{
 	}
 	
 	method intentarComprar(powerUp) {
-		if(self.puedeComprar(powerUp)) {
+		if(self.puedeComprar(powerUp) and !self.podesMoverte() ) {
 			self.comprar(powerUp)
-		}else{
+		}else if(!self.podesMoverte()){
 			game.say(dealer, "No te alcanza pa")
 		}
 	}
