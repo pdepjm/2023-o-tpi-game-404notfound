@@ -12,7 +12,7 @@ class PjPrincipal{
     var property defensa = 1
     
 	var property vidaMax = 3
-    var property monedas = 50
+    var property monedas = 0
     var property puntuacion = 0
     
     var property cantidadDeMovimiento = 1
