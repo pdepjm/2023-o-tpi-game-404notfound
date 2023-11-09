@@ -57,6 +57,7 @@ object dealer {
 		self.mostrarPowerUp()
 		
 		self.agregarVisualesTienda()
+		
 		self.actualizarDealer()
 		
 		personaje.seleccionarPowerUp()
@@ -67,7 +68,18 @@ object dealer {
 		game.addVisual(texto_2)
 		game.addVisual(texto_3)
 		game.addVisual(precio_1)
+		game.addVisual(precio_2)
+		game.addVisual(precio_3)
 	}
+	
+	method removerVisualesTienda(){
+		game.removeVisual(texto_1)
+		game.removeVisual(texto_2)
+		game.removeVisual(texto_3)
+		game.removeVisual(precio_1)
+		game.removeVisual(precio_2)
+		game.removeVisual(precio_3)
+	}	
 	method reponePowerUps(){
 		catalogo = [powerUp1,powerUp2,powerUp3,powerUp4]
 	}
@@ -98,6 +110,7 @@ object dealer {
 			game.removeVisual(self)
 			stock.forEach{powerUp_ => self.removerVisual(powerUp_)}
 			personaje.moverse(true)
+			self.removerVisualesTienda()
 		}
 	}
 	method removerVisual(powerUp_){

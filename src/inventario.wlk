@@ -83,7 +83,29 @@ object precio_1 {
 	
 	method obtenerPowerUp() = dealer.obtenerPowerUpEnNPosicion(0)
 	method obtenerPrecio() = self.obtenerPowerUp().precio()
-    method text() = self.obtenerPrecio()
+    method text() = self.obtenerPrecio().toString()
+        
+    method esChocado(personaje){}
+}
+
+object precio_2 {
+
+    method position() = game.at(4,7)
+	
+	method obtenerPowerUp() = dealer.obtenerPowerUpEnNPosicion(1)
+	method obtenerPrecio() = self.obtenerPowerUp().precio()
+    method text() = self.obtenerPrecio().toString()
+        
+    method esChocado(personaje){}
+}
+
+object precio_3 {
+
+    method position() = game.at(5,7)
+	
+	method obtenerPowerUp() = dealer.obtenerPowerUpEnNPosicion(2)
+	method obtenerPrecio() = self.obtenerPowerUp().precio()
+    method text() = self.obtenerPrecio().toString()
         
     method esChocado(personaje){}
 }

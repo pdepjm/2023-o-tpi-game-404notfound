@@ -65,15 +65,16 @@ object tablero {
 
 	method generarObjetosTablero(){
 		
-		if (nivel == 2) {
+		if (nivel == 5) {
 
 			portal.position(game.at(null,null))
 			posicionesImportantes.agregrarPosicion(portal.position())			
 	 		game.removeVisual(portal)
 
-			const mounstruoFinal = new Monstruo(nivel = 10,position = game.at(0,10), imagen = "assets/monstruos/finalBoss.png")
-			game.addVisual(mounstruoFinal)	 
-			posicionesImportantes.agregrarPosicion(mounstruoFinal.position())
+			const monstruoFinal = new Monstruo(nivel = 10,position = game.at(0,10), imagen = "assets/monstruos/finalBoss.png", esMonstruoFinal = true)
+			monstruoFinal.generarPosicion()
+			game.addVisual(monstruoFinal)	 
+			posicionesImportantes.agregrarPosicion(monstruoFinal.position())
 			
 			ruben.generarPosicion()
 			posicionesImportantes.agregrarPosicion(ruben.position())	

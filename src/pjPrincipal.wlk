@@ -201,4 +201,14 @@ object fondoGameOver{
 		game.addVisual(self)
 	}
 }
+object fondoYouWin{
+	const imagen = "assets/fondo/youWin.png"
+	var property position = game.at(0,0)
+	
+	method image() = imagen
+	method ponerFondo(){
+		game.addVisual(self)
+	}
+}
+
 const ruben = new PjPrincipal()
