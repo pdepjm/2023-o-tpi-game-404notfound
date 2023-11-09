@@ -10,15 +10,16 @@ object portal {
     const imagen = "assets/items/portal.png"
     
     var columna
-    
+    const fila = 10
     var property position
 
     method image() = imagen
 	method columna() = columna
+	method fila() = fila
 	
 	method generarPosicion() {
 		columna = (0.randomUpTo(8)).roundUp()
-    	position = game.at(columna,10)
+    	position = game.at(columna,fila)
 	}
 	
 	method generarNivel() {
@@ -62,27 +63,23 @@ object tablero {
 
 	method generarObjetosTablero(){
 		
-		if (nivel < 5) {
-			dealer.generarPosicion()		
-			portal.generarPosicion()		
+		if (nivel == 5) {
+	 		game.removeVisual(portal)
+			const mounstruoFinal = new Monstruo(nivel = 15,position = game.at(0,11), imagen = "assets/monstruos/monstruo1.png")
+			game.addVisual(mounstruoFinal)	 
+		} 
+		dealer.generarPosicion()		
+		portal.generarPosicion()		
 		new Range(start = 2, end = game.width()+1).forEach{
 			fila => new Range(start = 0, end = game.height()).forEach{
 				columna => self.generarObjeto(columna,fila)
 				}
 			}
-		}
-		else if (nivel == 5) {
-			/*
-			 * No tiene que haber portal; tiene que estar el monstruo final en su lugar
-			 */
-		} 
 }
-	
 	method generarObjeto(columna,fila){
-		
-		    // Posicion Ruben 					Posicion Portal									Posicion Dealer
-		if((columna == 4 and fila == 2) or (columna == portal.columna() and fila == 10) or (columna == dealer.columna() and fila == dealer.fila())){
-			// Se supone que este vacio para que no se generen objetos random en las posiciones de esos objetos
+		   
+		if(posicionesImportantes.esPosicionImportante(columna,fila)){
+			// Se supone que este vacio para que no se generen objetos en las posiciones de esos objetos
 		}else{
 			const num = (0.randomUpTo(3)).roundUp()
 			if (num == 1 or num == 2) {
@@ -225,5 +222,10 @@ object tablero {
 	    game.addVisual(dealer)
 	    game.addVisual(portal)
 	    game.addVisual(ruben)
-	}			
+	}
 }
+object posicionesImportantes{
+	const posicionesImportantes = [ruben.position(),dealer.position(),portal.position()]
+	
+	method esPosicionImportante(columna,fila) = posicionesImportantes.contains(game.at(columna,fila))
+}			
