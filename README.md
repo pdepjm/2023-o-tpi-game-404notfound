@@ -1,4 +1,7 @@
 
+PDF PRESENTADO EN CLASE CON IMAGENES DEL OBJETO: 
+[Guia de Juego - TP Wollok Game - 404notFound.pdf](https://github.com/pdepjm/2023-o-tpi-game-404notfound/files/13304008/Guia.de.Juego.-.TP.Wollok.Game.-.404notFound.pdf)
+
 LA AVENTURA DE RUBÉN
 
 # Personajes
@@ -25,6 +28,11 @@ Monstruos
 ## Mago (Nivel 3)
  - Vida: 3 de vida. 
  - Ataque: 3 de ataque.
+
+## Monstruo Final (Nivel 10)
+ - Vida: 10 de vida. 
+ - Ataque: 10 de ataque.
+
 # Items
 Se van a poder encontrar los siguientes ítems a lo largo del mapa.
 Todas tienen efecto únicamente en el héroe
