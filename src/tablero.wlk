@@ -69,7 +69,8 @@ object tablero {
 			game.addVisual(mounstruoFinal)	 
 		} 
 		dealer.generarPosicion()		
-		portal.generarPosicion()		
+		portal.generarPosicion()
+		posicionesImportantes.actualizarPosiciones()		
 		new Range(start = 2, end = game.width()+1).forEach{
 			fila => new Range(start = 0, end = game.height()).forEach{
 				columna => self.generarObjeto(columna,fila)
@@ -225,7 +226,10 @@ object tablero {
 	}
 }
 object posicionesImportantes{
-	const posicionesImportantes = [ruben.position(),dealer.position(),portal.position()]
+	var posicionesImportantes = [ruben.position(),dealer.position(),portal.position()]
 	
+	method actualizarPosiciones(){
+		posicionesImportantes = [ruben.position(),dealer.position(),portal.position()]
+	}
 	method esPosicionImportante(columna,fila) = posicionesImportantes.contains(game.at(columna,fila))
 }			
