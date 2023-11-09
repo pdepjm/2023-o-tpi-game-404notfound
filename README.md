@@ -1,6 +1,6 @@
 
 PDF PRESENTADO EN CLASE CON IMAGENES DE LOS PERSONAJES/ITEMS: 
-[Guia de Juego - TP Wollok Game - 404notFound.pdf](file:///D:/Descargas/Guia%20de%20Juego%20-%20TP%20Wollok%20Game%20-%20404notFound.pdf)
+[file:///D:/Descargas/Guia%20de%20Juego%20-%20TP%20Wollok%20Game%20-%20404notFound.pdf]
 
 ## Equipo de desarrollo
 
