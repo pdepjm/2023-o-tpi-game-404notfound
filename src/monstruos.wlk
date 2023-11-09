@@ -38,12 +38,10 @@ class Monstruo {
     	
         if(self.sobrevivio()){
             self.boquear()
-            atacante.morir()
         }else if(atacante.tieneVida()){
             atacante.boquear()
             self.morir()
         }else{
-        	atacante.morir()
         	self.morir()
         }
     }

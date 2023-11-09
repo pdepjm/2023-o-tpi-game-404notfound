@@ -7,9 +7,9 @@ import tablero.*
 
 class PjPrincipal{
 
+    var property vida = 3
     var property ataque = 1
     var property defensa = 1
-    var property vida = 1
     
 	var property vidaMax = 3
     var property monedas = 50
@@ -70,7 +70,6 @@ class PjPrincipal{
         self.puntuarPorDefensa(enemigo, aux)
 	        
         aux = vida
-//	    vida = self.reduccionAlDefenderse(enemigo, self.vida()) 
 		self.perderVida(enemigo.nivel())
         self.puntuarPorDefensa(enemigo, aux)
 	}

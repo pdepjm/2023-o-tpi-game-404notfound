@@ -59,25 +59,22 @@ class Pocion inherits Items{
 class Pinches inherits Items{
 
     override method esChocado(personaje){
-        personaje.vida((personaje.vida() - nivel).max(0))
         imagen = "assets/items/pinchosSangre.png"
-        personaje.morirSiNoTieneVida()
+        personaje.perderVida(self.nivel())
     }
 
 }
 
 
-// Aumentar en 1 cada Item que tenga menos las monedas
+// AMARILLO -  +1 de vida, +1 de ataque, +1 de defensa
 object powerUp1 {
 		
 	const imagen = "assets/items/powerUp1.png" 
-	const precio = 10
+	const precio = 5
 	var property position = game.at(6,15)
-	const  nombre = "powerUp1"
 	
 	method image() = imagen
 	method precio() = precio
-	method nombre()	= nombre
 
 	method esUsado(personaje)
 	{
@@ -91,18 +88,15 @@ object powerUp1 {
 	}	
 
 
-// Aumenta la vida maxima. Caso Base de 3 a 4 corazones
+// VERDE - Aumenta la vida maxima en una unidad. Caso Base de 3 a 4 corazones
 object powerUp2 {
 		
 	const imagen = "assets/items/powerUp2.png" 
-	const precio = 10
+	const precio = 12
 	var property position = game.at(3,15)
-	const nombre = "powerUp2"
 
 	method image() = imagen
 	method precio() = precio
-
-	method nombre()	= nombre
 
 	method esUsado(personaje)
 	{
@@ -114,11 +108,11 @@ object powerUp2 {
 	}	
 	
 
-// Todos los monstruos de nivel 2 pasan a ser de nivel 1, a partir del siguiente nivel
+// MATERIA - Todos los monstruos de nivel 2 pasan a ser de nivel 1, a partir del siguiente nivel
 object powerUp3 {
 		
 	const imagen = "assets/items/powerUp3.png" 
-	const precio = 10
+	const precio = 15
 	var property position = game.at(4,15)
 	const nombre = "powerUp3"
 	
@@ -128,7 +122,6 @@ object powerUp3 {
 
 	method esUsado(personaje)
 	{
-
 		 tablero.nivelMonstruo(1) 
 		 game.removeVisual(self)
 		 ruben.tienePowerUp(false)
@@ -136,8 +129,7 @@ object powerUp3 {
 	}
 }	
 
-
-//Moverse 2 casillas
+// AZUL - Saltar una casilla
 object powerUp4 {
 		
 	const  imagen = "assets/items/powerUp4.png"

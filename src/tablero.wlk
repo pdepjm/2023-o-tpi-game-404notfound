@@ -46,7 +46,6 @@ class Pared {
 		const boing = game.sound("assets/sonidos/boing.mp3")
 		boing.play()
 	}
-	
 }
 
 object tablero {

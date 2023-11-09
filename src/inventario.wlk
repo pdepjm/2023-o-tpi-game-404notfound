@@ -2,6 +2,7 @@ import wollok.game.*
 import monstruos.*
 import items.*
 import pjPrincipal.*
+import dealer.*
 
 object texto_vidas {
 
@@ -46,5 +47,43 @@ object texto_puntuacion {
 
     method text() = "Puntuacion: " + ruben.puntuacion()
     
+    method esChocado(personaje){}
+}
+
+object texto_1 {
+
+    method position() = game.at(3,5)
+
+    method text() = "1"
+    
+    method esChocado(personaje){}
+}
+
+object texto_2 {
+
+    method position() = game.at(4,5)
+
+    method text() = "2"
+    
+    method esChocado(personaje){}
+}
+
+object texto_3 {
+
+    method position() = game.at(5,5)
+
+    method text() = "3"
+    
+    method esChocado(personaje){}
+}
+
+object precio_1 {
+
+    method position() = game.at(3,7)
+	
+	method obtenerPowerUp() = dealer.obtenerPowerUpEnNPosicion(0)
+	method obtenerPrecio() = self.obtenerPowerUp().precio()
+    method text() = self.obtenerPrecio()
+        
     method esChocado(personaje){}
 }

@@ -2,6 +2,7 @@ import wollok.game.*
 import pjPrincipal.*
 import items.*
 import tablero.*
+import inventario.*
 
 object dealer {
 	
@@ -12,7 +13,7 @@ object dealer {
 	var property desaparecer = false //Desaparece una vez que interactue con el pjPrincipal y aparece al generar nuevo lvl
 	var catalogo
 	var posicionesPP
-	var stock
+	var stock = []
 	const imagen = "assets/items/pelaAbajo.png" 
 	
 	method image() = imagen	
@@ -55,11 +56,18 @@ object dealer {
 		self.mostrarPowerUp()
 		self.mostrarPowerUp()
 		
+		self.agregarVisualesTienda()
 		self.actualizarDealer()
 		
 		personaje.seleccionarPowerUp()
 }
 	
+	method agregarVisualesTienda(){
+		game.addVisual(texto_1)
+		game.addVisual(texto_2)
+		game.addVisual(texto_3)
+		game.addVisual(precio_1)
+	}
 	method reponePowerUps(){
 		catalogo = [powerUp1,powerUp2,powerUp3,powerUp4]
 	}
