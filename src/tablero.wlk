@@ -39,7 +39,6 @@ class Pared {
 		personaje.volverAPosicion()
 		game.say(personaje, "Reboté \n :-(")
 		const boing = game.sound("assets/sonidos/boing.mp3")
-		boing.initialize()
 		boing.play()
 	}
 	
@@ -72,74 +71,79 @@ object tablero {
 		if((columna == 4 and fila == 2) or (columna == portal.columna() and fila == 10) or (columna == dealer.columna() and fila == dealer.fila())){
 			// Se supone que este vacio para que no se generen objetos random en las posiciones de esos objetos
 		}else{
-			const numero = (0.randomUpTo(13)).roundUp()
-			if(numero == 1){
-				const monstruo1 = new Monstruo(nivel = 1,position = game.at(columna,fila), imagen = "assets/monstruos/monstruo1.png")
-				game.addVisual(monstruo1)
-				objetosEnTablero.add(monstruo1)			
-			}
-			if(numero == 2){
-				const monstruo2 = new Monstruo(nivel = nivelMonstruo,position = game.at(columna,fila), imagen = "assets/monstruos/monstruo2.png")
-				game.addVisual(monstruo2)
-				objetosEnTablero.add(monstruo2)				
-			}
-			if(numero == 3){
-				const monstruo3 = new Monstruo(nivel = 3,position = game.at(columna,fila), imagen = "assets/monstruos/mago.png")
-				game.addVisual(monstruo3)
-				objetosEnTablero.add(monstruo3)					
-			}
-			if(numero == 4){
-				const vida1 = new Pocion(nivel = 1, imagen = "assets/items/pocion1.png", position = game.at(columna,fila))
-				game.addVisual(vida1)
-				objetosEnTablero.add(vida1)					
-			}
-			if(numero == 5){
-				const vida2 = new Pocion(nivel = 2, imagen = "assets/items/pocion2.png", position = game.at(columna,fila))
-				game.addVisual(vida2)
-				objetosEnTablero.add(vida2)				
-			}
-			if(numero == 6){
-				const daga1 = new Daga(nivel = 1, imagen = "assets/items/espada1.png", position = game.at(columna,fila))
-				game.addVisual(daga1)
-				objetosEnTablero.add(daga1)				
-			}
-			if(numero == 7){
-				const daga2 = new Daga(nivel = 2, imagen = "assets/items/espada2.png", position = game.at(columna,fila))
-				game.addVisual(daga2)
-				objetosEnTablero.add(daga2)				
-			}
-			if(numero == 8){
-				const daga3 = new Daga(nivel = 3, imagen = "assets/items/espada3.png", position = game.at(columna,fila))
-				game.addVisual(daga3)
-				objetosEnTablero.add(daga3)			
-			}
-			if(numero == 9){
-				const escudo1 = new Escudo(nivel = 1, imagen = "assets/items/escudo1.png", position = game.at(columna,fila))
-				game.addVisual(escudo1)
-				objetosEnTablero.add(escudo1)			
-			}
-			if(numero == 10){
-				const escudo2 = new Escudo(nivel = 2, imagen = "assets/items/escudo2.png", position = game.at(columna,fila))
-				game.addVisual(escudo2)			
-				objetosEnTablero.add(escudo2)
-			}
-			if(numero == 11){
-				const escudo3 = new Escudo(nivel = 3, imagen = "assets/items/escudo3.png", position = game.at(columna,fila))
-				game.addVisual(escudo3)
-				objetosEnTablero.add(escudo3)			
-			}
-			if(numero == 12){
-				const moneda1 = new Moneda(nivel = 1, imagen = "assets/items/moneda1.png", position = game.at(columna,fila))
-				game.addVisual(moneda1)
-				objetosEnTablero.add(moneda1)			
-			}
-			if(numero == 13){
+			const num = (0.randomUpTo(3)).roundUp()
+			if (num == 1 or num == 2) {
+				const numero = (0.randomUpTo(4)).roundUp()
+				if(numero == 1){
+					const monstruo1 = new Monstruo(nivel = 1,position = game.at(columna,fila), imagen = "assets/monstruos/monstruo1.png")
+					game.addVisual(monstruo1)
+					objetosEnTablero.add(monstruo1)			
+				}
+				if(numero == 2){
+					const monstruo2 = new Monstruo(nivel = nivelMonstruo,position = game.at(columna,fila), imagen = "assets/monstruos/monstruo2.png")
+					game.addVisual(monstruo2)
+					objetosEnTablero.add(monstruo2)				
+				}
+				if(numero == 3){
+					const monstruo3 = new Monstruo(nivel = 3,position = game.at(columna,fila), imagen = "assets/monstruos/mago.png")
+					game.addVisual(monstruo3)
+					objetosEnTablero.add(monstruo3)					
+				}
+				if(numero == 4){
 				const pinches1 = new Pinches(nivel = 1, imagen = "assets/items/pinchos1.png", position = game.at(columna,fila))
 				game.addVisual(pinches1)
 				objetosEnTablero.add(pinches1)			
+				}
 			}
-			
+		else if (num == 3){
+				const numero = (0.randomUpTo(9)).roundUp()
+				if(numero == 1){
+					const vida1 = new Pocion(nivel = 1, imagen = "assets/items/pocion1.png", position = game.at(columna,fila))
+					game.addVisual(vida1)
+					objetosEnTablero.add(vida1)					
+				}
+				if(numero == 2){
+					const vida2 = new Pocion(nivel = 2, imagen = "assets/items/pocion2.png", position = game.at(columna,fila))
+					game.addVisual(vida2)
+					objetosEnTablero.add(vida2)				
+				}
+				if(numero == 3){
+					const daga1 = new Daga(nivel = 1, imagen = "assets/items/espada1.png", position = game.at(columna,fila))
+					game.addVisual(daga1)
+					objetosEnTablero.add(daga1)				
+				}
+				if(numero == 4){
+					const daga2 = new Daga(nivel = 2, imagen = "assets/items/espada2.png", position = game.at(columna,fila))
+					game.addVisual(daga2)
+					objetosEnTablero.add(daga2)				
+				}
+				if(numero == 5){
+					const daga3 = new Daga(nivel = 3, imagen = "assets/items/espada3.png", position = game.at(columna,fila))
+					game.addVisual(daga3)
+					objetosEnTablero.add(daga3)			
+				}
+				if(numero == 6){
+					const escudo1 = new Escudo(nivel = 1, imagen = "assets/items/escudo1.png", position = game.at(columna,fila))
+					game.addVisual(escudo1)
+					objetosEnTablero.add(escudo1)			
+				}
+				if(numero == 7){
+					const escudo2 = new Escudo(nivel = 2, imagen = "assets/items/escudo2.png", position = game.at(columna,fila))
+					game.addVisual(escudo2)			
+					objetosEnTablero.add(escudo2)
+				}
+				if(numero == 8){
+					const escudo3 = new Escudo(nivel = 3, imagen = "assets/items/escudo3.png", position = game.at(columna,fila))
+					game.addVisual(escudo3)
+					objetosEnTablero.add(escudo3)			
+				}
+				if(numero == 9){
+					const moneda1 = new Moneda(nivel = 1, imagen = "assets/items/moneda1.png", position = game.at(columna,fila))
+					game.addVisual(moneda1)
+					objetosEnTablero.add(moneda1)			
+				}
 		}
+}
 }
 	
 	method generarParedes() {
