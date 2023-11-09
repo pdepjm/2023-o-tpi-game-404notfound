@@ -15,16 +15,16 @@ Es un comerciante con el que Ruben puede intercambiar las monedas que ha recolec
 
 Monstruos
 #Alien (Nivel 1)
-  Vida: 1 de vida.
-  Ataque: 1 de ataque.
+ - Vida: 1 de vida.
+ - Ataque: 1 de ataque.
 
 #Vikingo (Nivel 2) 
-  Vida: 2 de vida. 
-  Ataque: 2 de ataque.
+ - Vida: 2 de vida. 
+ - Ataque: 2 de ataque.
 
 #Mago (Nivel 3)
-  Vida: 3 de vida. 
-  Ataque: 3 de ataque.
+ - Vida: 3 de vida. 
+ - Ataque: 3 de ataque.
 ##Items
 Se van a poder encontrar los siguientes ítems a lo largo del mapa.
 Todas tienen efecto únicamente en el héroe
@@ -32,44 +32,49 @@ Todas tienen efecto únicamente en el héroe
 
  Estas monedas se van a poder intercambiar con el dealer.
 #Defensa
-  Nivel 1 - sube 1 nivel de defensa
+ - Nivel 1 - sube 1 nivel de defensa
 
-  Nivel 2 - sube 2 niveles de defensa
+ - Nivel 2 - sube 2 niveles de defensa
 
-  Nivel 3 - sube 3 niveles de defensa
+ - Nivel 3 - sube 3 niveles de defensa
 
 #Ataque
 
-  Nivel 1 - sube 1 nivel de ataque
+ - Nivel 1 - sube 1 nivel de ataque
 
-  Nivel 2 - sube 2 niveles de ataque
+ - Nivel 2 - sube 2 niveles de ataque
 
-  Nivel 3 - sube 3 niveles de ataque
+ - Nivel 3 - sube 3 niveles de ataque
 
 
 #Vida
-  Nivel 1 - sube 1 nivel de vida
+ - Nivel 1 - sube 1 nivel de vida
 
-  Nivel 2 - sube 2 niveles de vida
+ - Nivel 2 - sube 2 niveles de vida
 
 #Pinchos
  
-  Restan 1 nivel de vida
+ - Restan 1 nivel de vida
 
 #PowerUps
 
+- Aumenta los atributos de Ruben: 
+   Vida en 1.
+   Ataque en 1.
+   Defensa en 1.
+	 Precio: ??
 
 
+- Aumenta la vida máxima una unidad.
+   Precio: 12 monedas
 
 
+- Todos los monstruos de nivel 2 pasan a ser de nivel 1 en el siguiente nivel y dura todo el juego.
+   Precio: 15 monedas
 
 
-
-
-Resta el nivel de los monstruos en 1.
-
-
-
+- Permite a Rubén saltear una casilla
+   Precio: ??
 
 #Portal
 
