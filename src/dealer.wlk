@@ -5,11 +5,12 @@ import tablero.*
 
 object dealer {
 	
-	// Para que se genere exactamente un Power Up de cada tipo - Ver una forma mejor
+	/* Para que se genere exactamente un Power Up de cada tipo - Ver una forma mejor
 	var cantPP1 = 0
 	var cantPP2 = 0
 	var cantPP3 = 0
 	var cantPP4 = 0
+	*/
 	var columna
 	var fila
 	var objetoSeleccionado

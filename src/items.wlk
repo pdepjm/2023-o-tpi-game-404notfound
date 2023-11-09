@@ -163,7 +163,7 @@ object powerUp4 {
 
 object powerUpNulo {
 		const precio = 0
-		var property position
+		//var property position
 		method esUsado(personaje) {
 			ruben.tienePowerUp(false)
 			ruben.powerUpQueTiene(self)

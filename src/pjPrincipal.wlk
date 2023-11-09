@@ -98,6 +98,9 @@ class PjPrincipal{
     	self.moverse(false)
     	//pasar a pantalla de GAME OVER
     	fondoGameOver.ponerFondo()
+    	const gameOver= game.sound("assets/sonidos/gameOver.mp3")
+		gameOver.initialize()
+		gameOver.play()
     	game.schedule(3000, {=>game.stop()})
 
     }

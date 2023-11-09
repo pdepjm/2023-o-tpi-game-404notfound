@@ -37,6 +37,10 @@ class Pared {
 	method esChocado(personaje){
 		
 		personaje.volverAPosicion()
+		game.say(personaje, "Reboté \n :-(")
+		const boing = game.sound("assets/sonidos/boing.mp3")
+		boing.initialize()
+		boing.play()
 	}
 	
 }
